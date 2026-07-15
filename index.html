@@ -118,11 +118,16 @@ const PK_KEY  = "wisteria.pkcache";
 let store = loadStore();
 let pkCache = loadCache();
 function loadStore(){
-  try{ const s = JSON.parse(localStorage.getItem(LS_KEY)); return (s && s.kept) ? s : {kept:[]}; }
+  try{ const s = JSON.parse(localStorage.getItem(LS_KEY));
+       return (s && Array.isArray(s.kept)) ? s : {kept:[]}; }
   catch(e){ return {kept:[]}; }
 }
 function saveStore(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(store)); }catch(e){} }
-function loadCache(){ try{ return JSON.parse(localStorage.getItem(PK_KEY)) || {}; }catch(e){ return {}; } }
+function loadCache(){
+  try{ const c = JSON.parse(localStorage.getItem(PK_KEY));
+       return (c && typeof c === "object" && !Array.isArray(c)) ? c : {}; }
+  catch(e){ return {}; }
+}
 function saveCache(){ try{ localStorage.setItem(PK_KEY, JSON.stringify(pkCache)); }catch(e){} }
 
 /* ---------- dates ---------- */
@@ -488,7 +493,8 @@ function todayCare(){ const n = dayNumber();
 
 /* ---------- state ---------- */
 let expanded = false;
-let pk = {id: todayDexId(), name:null, note:null, loading:true};
+let currentDay = dayNumber();
+let pk = {id: todayDexId(), name:null, note:null};
 const isKept = t => store.kept.some(k => k.t === t);
 
 /* ---------- render ---------- */
@@ -586,6 +592,23 @@ function loadPokemon(){
       render();
     });
 }
+
+/* ---------- day rollover ----------
+   A home-screen app can sit in memory for days. Without this, it would
+   keep showing yesterday. Checked on resume, on focus, and slowly. */
+function checkDay(){
+  const n = dayNumber();
+  if(n === currentDay) return;
+  currentDay = n;
+  expanded = false;
+  pk = {id: todayDexId(), name:null, note:null};
+  render();
+  loadPokemon();
+}
+document.addEventListener("visibilitychange", () => { if(!document.hidden) checkDay(); });
+window.addEventListener("focus", checkDay);
+window.addEventListener("pageshow", checkDay);
+setInterval(checkDay, 60000);
 
 render();
 loadPokemon();
