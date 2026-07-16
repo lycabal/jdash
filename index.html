@@ -11,36 +11,56 @@
 <title>Wisteria</title>
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%235B3FA8'/%3E%3Ctext x='50' y='66' font-size='46' text-anchor='middle' fill='%23F7F5FA' font-family='Helvetica,Arial,sans-serif'%3E%E2%9C%B6%3C/text%3E%3C/svg%3E" />
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;1,14..32,300;1,14..32,400&family=Fragment+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;1,14..32,300;1,14..32,400&family=Fragment+Mono&display=swap');
 :root{
-  --paper:#F7F5FA; --card:#FCFBFE; --ink:#2B2338; --faint:#6E6580;
-  --line:#DDD6E8; --violet:#5B3FA8; --wisteria:#9C86D4; --bloom:#EFEAF7;
-  --disp:'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
-  --body:'Inter', 'Helvetica Neue', Arial, sans-serif;
-  --mono:'Fragment Mono', ui-monospace, monospace;
+  --paper:#F7F4FB; --card:#FCFAFE; --ink:#2A2140; --faint:#6E6480;
+  --line:#DFD7EC; --violet:#5B3FA8; --wisteria:#A78BD4; --plum:#3E2C63;
+  --bloom:#EFE9F8; --petal-a:#C9B8EC; --petal-b:#B39DDB; --petal-c:#8F76C4;
+  --disp:'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Inter','Helvetica Neue',Arial,sans-serif;
+  --mono:'Fragment Mono',ui-monospace,monospace;
 }
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
 html{color-scheme:light only;}
-body{margin:0; background:var(--paper); color:var(--ink);
+body{margin:0; color:var(--ink);
+  background:
+    radial-gradient(90vw 50vh at 15% -8%, #EDE5F9 0%, rgba(237,229,249,0) 60%),
+    radial-gradient(70vw 40vh at 100% 0%, #F1EBFA 0%, rgba(241,235,250,0) 55%),
+    var(--paper);
   font-family:var(--body); font-size:15px; line-height:1.6;
   min-height:100vh; padding-bottom:calc(40px + env(safe-area-inset-bottom));}
-header{max-width:640px; margin:0 auto; padding:24px 18px 0;}
+::selection{background:var(--petal-a); color:var(--plum);}
+
+/* ---- the vine: wisteria draped over the doorway ---- */
+.vinewrap{position:relative; height:96px; max-width:640px; margin:0 auto;
+  pointer-events:none; overflow:visible;}
+.vine{position:absolute; top:0; left:0; width:100%; height:150px; overflow:visible;}
+.raceme{transform-origin:50% 0;}
+@keyframes sway{from{transform:rotate(-1.6deg);} to{transform:rotate(1.8deg);}}
+.raceme.s1{animation:sway 7s ease-in-out infinite alternate;}
+.raceme.s2{animation:sway 9s ease-in-out infinite alternate; animation-delay:-3s;}
+.raceme.s3{animation:sway 11s ease-in-out infinite alternate; animation-delay:-6s;}
+.raceme.s4{animation:sway 8s ease-in-out infinite alternate; animation-delay:-1.5s;}
+
+header{max-width:640px; margin:0 auto; padding:0 18px;}
 .metarow{display:flex; justify-content:space-between; align-items:baseline;
   font-family:var(--mono); font-size:10px; letter-spacing:.06em;
   text-transform:uppercase; color:var(--faint); margin-bottom:8px;}
-h1{font-family:var(--disp); font-size:25px; font-weight:600;
-  margin:0; letter-spacing:-.02em;}
+h1{font-family:var(--disp); font-size:34px; font-weight:700;
+  margin:0; letter-spacing:-.03em; color:var(--plum);}
 h1 .dot{color:var(--violet);}
-.openrule{height:3px; background:var(--ink); margin:10px 0 0;}
+.openrule{height:3px; background:var(--ink); margin:12px 0 0;}
+
 main{max-width:640px; margin:0 auto; padding:16px 18px 8px;}
 .eyebrow{font-family:var(--mono); font-size:10px; letter-spacing:.08em;
-  text-transform:uppercase; color:var(--violet); margin:22px 0 6px;
+  text-transform:uppercase; color:var(--violet); margin:24px 0 6px;
   display:flex; justify-content:space-between; align-items:baseline;}
+.eyebrow .bl{color:var(--wisteria); margin-right:7px; font-size:11px;}
 .eyebrow .n{color:var(--faint); letter-spacing:.04em;}
 .card{background:var(--card); border:1px solid var(--line); border-radius:3px;
-  padding:16px; margin-bottom:2px;}
-.rtitle{font-family:var(--disp); font-size:18px; font-weight:600;
-  margin:0 0 4px; letter-spacing:-.015em;}
+  padding:16px; margin-bottom:2px; position:relative;}
+.rtitle{font-family:var(--disp); font-size:21px; font-weight:600;
+  margin:0 0 4px; letter-spacing:-.02em; color:var(--plum);}
 .rtag{font-family:var(--mono); font-size:10px; letter-spacing:.06em;
   text-transform:uppercase; color:var(--faint); margin-bottom:10px;}
 .rtag b{color:var(--violet); font-weight:400;}
@@ -55,39 +75,49 @@ main{max-width:640px; margin:0 auto; padding:16px 18px 8px;}
   text-transform:uppercase; color:var(--faint); cursor:pointer;}
 .ghost:hover{border-color:var(--wisteria); color:var(--violet);}
 .ghost.kept{background:var(--violet); border-color:var(--violet); color:#fff;}
-.care{display:flex; gap:12px; align-items:flex-start;}
+
+.care{display:flex; gap:12px; align-items:flex-start;
+  border-left:3px solid var(--wisteria);}
 .caremark{font-size:15px; color:var(--wisteria); line-height:1.5; flex:none;}
-.careline{font-family:var(--disp); font-size:16px; font-weight:500;
-  margin:0 0 3px; letter-spacing:-.01em;}
+.careline{font-family:var(--disp); font-size:16.5px; font-weight:500;
+  margin:0 0 3px; letter-spacing:-.01em; color:var(--plum);}
 .carewhy{font-size:13.5px; font-weight:300; color:var(--faint); margin:0;}
+
 .pkcard{display:flex; gap:14px; align-items:flex-start;}
-.pkimg{width:92px; height:92px; flex:none; background:var(--bloom);
-  border-radius:3px; display:flex; align-items:center; justify-content:center;}
-.pkimg img{width:84px; height:84px; object-fit:contain;}
+.pkimg{width:96px; height:96px; flex:none; background:var(--bloom);
+  border-radius:58% 42% 55% 45% / 48% 55% 45% 52%;
+  display:flex; align-items:center; justify-content:center;}
+.pkimg img{width:82px; height:82px; object-fit:contain;}
 .pkfall{font-family:var(--disp); font-size:30px; color:var(--wisteria);}
 .pkname{font-family:var(--disp); font-size:16px; font-weight:600;
-  margin:0 0 1px; letter-spacing:-.01em;}
+  margin:0 0 1px; letter-spacing:-.01em; color:var(--plum);}
 .pkdex{font-family:var(--mono); font-size:10px; color:var(--faint);
   letter-spacing:.05em; margin-left:6px; font-weight:400;}
 .pkgenus{font-family:var(--mono); font-size:10px; letter-spacing:.05em;
   text-transform:uppercase; color:var(--faint); margin:0 0 6px;}
-.pkflavor{font-size:13.5px; font-weight:300; line-height:1.55; margin:0 0 6px;
-  color:var(--ink);}
+.pkflavor{font-size:13.5px; font-weight:300; line-height:1.55; margin:0 0 6px;}
 .pknote{font-size:13.5px; font-weight:300; font-style:italic; line-height:1.55;
   margin:0; color:var(--violet);}
-.skyline{font-size:15px; font-weight:300; font-style:italic; margin:0 0 12px;
-  padding-bottom:12px; border-bottom:1px solid var(--line);}
+
+.skyline{font-size:15.5px; font-weight:300; font-style:italic; margin:0 0 12px;
+  padding-bottom:12px; border-bottom:1px solid var(--line); color:var(--plum);}
 .chart{width:100%; border-collapse:collapse; font-size:13.5px; font-weight:300;}
 .chart td{padding:6px 4px; border-bottom:1px solid var(--line);}
-.chart td:first-child{font-family:var(--mono); font-size:10px;
-  letter-spacing:.05em; text-transform:uppercase; color:var(--faint); width:34%;}
+.chart td.g{width:30px; text-align:center; padding-left:0;}
+.glyph{display:inline-flex; align-items:center; justify-content:center;
+  width:22px; height:22px; border-radius:50%; background:var(--bloom);
+  color:var(--violet); font-size:12px; font-family:var(--body); font-weight:400;}
+.chart td.pl{font-family:var(--mono); font-size:10px;
+  letter-spacing:.05em; text-transform:uppercase; color:var(--faint); width:30%;}
 .chart tr:last-child td{border-bottom:none;}
+
 .kept{padding:12px 2px; border-bottom:1px solid var(--line);}
 .kept:last-child{border-bottom:none;}
 .kmeta{font-family:var(--mono); font-size:10px; letter-spacing:.05em;
   text-transform:uppercase; color:var(--faint); margin-bottom:3px;}
+.kmeta .bl{color:var(--wisteria); margin-right:6px;}
 .ktitle{font-family:var(--disp); font-size:14.5px; font-weight:600; margin:0;
-  letter-spacing:-.01em;}
+  letter-spacing:-.01em; color:var(--plum);}
 .kbody{font-size:13.5px; font-weight:300; color:var(--faint); margin:4px 0 0;}
 .krm{background:none; border:none; color:var(--faint); font-family:var(--mono);
   font-size:10px; text-transform:uppercase; letter-spacing:.05em; cursor:pointer;
@@ -102,9 +132,66 @@ button:focus-visible{outline:2px solid var(--violet); outline-offset:2px;}
 </style>
 </head>
 <body>
+<div class="vinewrap" aria-hidden="true">
+<svg class="vine" viewBox="0 0 640 150" preserveAspectRatio="xMidYMin meet" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <g id="blossom">
+      <ellipse cx="0" cy="0" rx="4.6" ry="3.1" fill="#B39DDB"/>
+      <ellipse cx="-2.6" cy="2.4" rx="3.4" ry="2.3" fill="#C9B8EC"/>
+      <ellipse cx="2.8" cy="2.2" rx="3.2" ry="2.2" fill="#8F76C4"/>
+    </g>
+  </defs>
+  <path d="M-10,6 C120,26 300,2 420,18 C520,31 600,10 650,20" fill="none" stroke="#3E2C63" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M-10,14 C140,34 360,12 650,30" fill="none" stroke="#3E2C63" stroke-width="1.3" stroke-linecap="round" opacity=".45"/>
+  <g class="raceme s1">
+    <path d="M96,18 C95,44 98,66 96,92" fill="none" stroke="#3E2C63" stroke-width="1.4"/>
+    <use href="#blossom" transform="translate(96,30) scale(1.25)"/>
+    <use href="#blossom" transform="translate(90,42) scale(1.15) rotate(-14)"/>
+    <use href="#blossom" transform="translate(101,52) scale(1.05) rotate(12)"/>
+    <use href="#blossom" transform="translate(93,63) scale(.92) rotate(-9)"/>
+    <use href="#blossom" transform="translate(99,73) scale(.78) rotate(7)"/>
+    <use href="#blossom" transform="translate(95,82) scale(.6) rotate(-5)"/>
+    <use href="#blossom" transform="translate(96,90) scale(.42)"/>
+  </g>
+  <g class="raceme s2">
+    <path d="M236,12 C235,36 238,58 236,78 " fill="none" stroke="#3E2C63" stroke-width="1.3"/>
+    <use href="#blossom" transform="translate(236,24) scale(1.1)"/>
+    <use href="#blossom" transform="translate(230,35) scale(1) rotate(-12)"/>
+    <use href="#blossom" transform="translate(241,45) scale(.88) rotate(10)"/>
+    <use href="#blossom" transform="translate(234,55) scale(.72) rotate(-7)"/>
+    <use href="#blossom" transform="translate(238,65) scale(.55) rotate(6)"/>
+    <use href="#blossom" transform="translate(236,74) scale(.38)"/>
+  </g>
+  <g class="raceme s3">
+    <path d="M472,20 C471,50 475,80 472,112" fill="none" stroke="#3E2C63" stroke-width="1.5"/>
+    <use href="#blossom" transform="translate(472,34) scale(1.35)"/>
+    <use href="#blossom" transform="translate(465,48) scale(1.25) rotate(-15)"/>
+    <use href="#blossom" transform="translate(478,60) scale(1.12) rotate(13)"/>
+    <use href="#blossom" transform="translate(468,72) scale(.98) rotate(-10)"/>
+    <use href="#blossom" transform="translate(476,84) scale(.82) rotate(8)"/>
+    <use href="#blossom" transform="translate(470,95) scale(.65) rotate(-6)"/>
+    <use href="#blossom" transform="translate(473,104) scale(.48) rotate(4)"/>
+    <use href="#blossom" transform="translate(472,111) scale(.32)"/>
+  </g>
+  <g class="raceme s4">
+    <path d="M584,16 C583,38 586,56 584,72" fill="none" stroke="#3E2C63" stroke-width="1.2"/>
+    <use href="#blossom" transform="translate(584,27) scale(1)"/>
+    <use href="#blossom" transform="translate(579,37) scale(.9) rotate(-11)"/>
+    <use href="#blossom" transform="translate(588,46) scale(.78) rotate(9)"/>
+    <use href="#blossom" transform="translate(582,55) scale(.6) rotate(-6)"/>
+    <use href="#blossom" transform="translate(585,64) scale(.44)"/>
+    <use href="#blossom" transform="translate(584,71) scale(.3)"/>
+  </g>
+  <g opacity=".9">
+    <path d="M158,20 q7,-7 15,-4 q-6,8 -15,4 Z" fill="#8F76C4" opacity=".55"/>
+    <path d="M338,12 q8,-6 16,-3 q-7,8 -16,3 Z" fill="#B39DDB" opacity=".6"/>
+    <path d="M532,20 q7,-7 15,-4 q-6,8 -15,4 Z" fill="#8F76C4" opacity=".5"/>
+  </g>
+</svg>
+</div>
 <header>
   <div class="metarow">
-    <span>Wisteria · a soft place</span>
+    <span>Wisteria &middot; a soft place</span>
     <span id="dateLbl"></span>
   </div>
   <h1>Wisteria<span class="dot">.</span></h1>
@@ -149,6 +236,9 @@ function niceDate(d){ d=d||new Date();
   return d.toLocaleDateString("en-US",{weekday:"long", month:"long", day:"numeric"}); }
 
 /* ---------- her chart (from Co–Star) ---------- */
+const GLYPHS = {Sun:"\u2609", Moon:"\u263D", Rising:"\u2191", Mercury:"\u263F",
+  Venus:"\u2640", Mars:"\u2642", Jupiter:"\u2643", Saturn:"\u2644",
+  Uranus:"\u2645", Neptune:"\u2646", Pluto:"\u2647"};
 const CHART = [
   ["Sun","Pisces"],["Moon","Scorpio"],["Rising","Gemini · 1st house"],
   ["Mercury","Pisces"],["Venus","Pisces · 9th house"],["Mars","Libra · 4th house"],
@@ -663,7 +753,7 @@ function render(){
   $("#dateLbl").textContent = niceDate();
   const r = todayReading(), c = todayCare(), kept = isKept(r);
   $("#main").innerHTML = `
-  <div class="eyebrow"><span>Today's reading</span></div>
+  <div class="eyebrow"><span><span class="bl">✿</span>Today's reading</span></div>
   <div class="card">
     <p class="rtitle">${esc(r.t)}</p>
     <div class="rtag">aligned with <b>${esc(r.p)}</b></div>
@@ -675,7 +765,7 @@ function render(){
     </div>
   </div>
 
-  <div class="eyebrow"><span>One kindness for the body</span></div>
+  <div class="eyebrow"><span><span class="bl">✿</span>One kindness for the body</span></div>
   <div class="card care">
     <span class="caremark">✦</span>
     <div>
@@ -684,7 +774,7 @@ function render(){
     </div>
   </div>
 
-  <div class="eyebrow"><span>Pokemon of the day</span></div>
+  <div class="eyebrow"><span><span class="bl">✿</span>Pokemon of the day</span></div>
   <div class="card pkcard">
     <div class="pkimg" id="pkbox">
       <img alt="${pk.name ? esc(pk.name) : "Today's Pokemon"}" id="pkimg"
@@ -698,17 +788,17 @@ function render(){
     </div>
   </div>
 
-  <div class="eyebrow"><span>Your sky today</span></div>
+  <div class="eyebrow"><span><span class="bl">✿</span>Your sky today</span></div>
   <div class="card">
     <p class="skyline">${esc(r.sky)}</p>
-    <table class="chart">${CHART.map(x=>`<tr><td>${esc(x[0])}</td><td>${esc(x[1])}</td></tr>`).join("")}</table>
+    <table class="chart">${CHART.map(x=>`<tr><td class="g"><span class="glyph">${GLYPHS[x[0]]||"\u2726"}</span></td><td class="pl">${esc(x[0])}</td><td>${esc(x[1])}</td></tr>`).join("")}</table>
   </div>
 
-  <div class="eyebrow"><span>Kept readings</span><span class="n">${store.kept.length || ""}</span></div>
+  <div class="eyebrow"><span><span class="bl">✿</span>Kept readings</span><span class="n">${store.kept.length || ""}</span></div>
   <div class="card">
     ${store.kept.length ? store.kept.slice().reverse().map((k,i)=>`
       <div class="kept">
-        <div class="kmeta">${esc(k.d)} · ${esc(k.p)}</div>
+        <div class="kmeta"><span class="bl">✿</span>${esc(k.d)} · ${esc(k.p)}</div>
         <p class="ktitle">${esc(k.t)}</p>
         <p class="kbody">${esc(k.b)}</p>
         <button class="krm" data-rm="${store.kept.length-1-i}">Release</button>
