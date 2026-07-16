@@ -9,25 +9,27 @@
 <meta name="apple-mobile-web-app-title" content="Wisteria" />
 <meta name="theme-color" content="#F7F5FA" />
 <title>Wisteria</title>
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%235B3FA8'/%3E%3Ctext x='50' y='66' font-size='46' text-anchor='middle' fill='%23F7F5FA' font-family='Georgia,serif'%3E%E2%9C%B6%3C/text%3E%3C/svg%3E" />
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%235B3FA8'/%3E%3Ctext x='50' y='66' font-size='46' text-anchor='middle' fill='%23F7F5FA' font-family='Helvetica,Arial,sans-serif'%3E%E2%9C%B6%3C/text%3E%3C/svg%3E" />
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Fragment+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;1,14..32,300;1,14..32,400&family=Fragment+Mono&display=swap');
 :root{
   --paper:#F7F5FA; --card:#FCFBFE; --ink:#2B2338; --faint:#6E6580;
   --line:#DDD6E8; --violet:#5B3FA8; --wisteria:#9C86D4; --bloom:#EFEAF7;
+  --disp:'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --body:'Inter', 'Helvetica Neue', Arial, sans-serif;
   --mono:'Fragment Mono', ui-monospace, monospace;
 }
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
 html{color-scheme:light only;}
 body{margin:0; background:var(--paper); color:var(--ink);
-  font-family:'Newsreader', Georgia, serif; font-size:16px; line-height:1.55;
+  font-family:var(--body); font-size:15px; line-height:1.6;
   min-height:100vh; padding-bottom:calc(40px + env(safe-area-inset-bottom));}
 header{max-width:640px; margin:0 auto; padding:24px 18px 0;}
 .metarow{display:flex; justify-content:space-between; align-items:baseline;
   font-family:var(--mono); font-size:10px; letter-spacing:.06em;
   text-transform:uppercase; color:var(--faint); margin-bottom:8px;}
-h1{font-family:'Fraunces', Georgia, serif; font-size:26px; font-weight:600;
-  margin:0; letter-spacing:-.01em;}
+h1{font-family:var(--disp); font-size:25px; font-weight:600;
+  margin:0; letter-spacing:-.02em;}
 h1 .dot{color:var(--violet);}
 .openrule{height:3px; background:var(--ink); margin:10px 0 0;}
 main{max-width:640px; margin:0 auto; padding:16px 18px 8px;}
@@ -37,16 +39,16 @@ main{max-width:640px; margin:0 auto; padding:16px 18px 8px;}
 .eyebrow .n{color:var(--faint); letter-spacing:.04em;}
 .card{background:var(--card); border:1px solid var(--line); border-radius:3px;
   padding:16px; margin-bottom:2px;}
-.rtitle{font-family:'Fraunces', Georgia, serif; font-size:19px; font-weight:500;
-  margin:0 0 4px; letter-spacing:-.005em;}
+.rtitle{font-family:var(--disp); font-size:18px; font-weight:600;
+  margin:0 0 4px; letter-spacing:-.015em;}
 .rtag{font-family:var(--mono); font-size:10px; letter-spacing:.06em;
   text-transform:uppercase; color:var(--faint); margin-bottom:10px;}
 .rtag b{color:var(--violet); font-weight:400;}
-.rbody{font-size:16px; font-weight:300; line-height:1.6; margin:0;}
+.rbody{font-size:15px; font-weight:300; line-height:1.65; margin:0;}
 .rbody.fold{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
   overflow:hidden;}
 .breath{margin-top:12px; padding-top:10px; border-top:1px solid var(--line);
-  font-size:14px; font-style:italic; color:var(--faint);}
+  font-size:13.5px; font-style:italic; color:var(--faint);}
 .rowbtns{display:flex; gap:8px; margin-top:12px;}
 .ghost{background:none; border:1px solid var(--line); border-radius:3px;
   padding:8px 14px; font-family:var(--mono); font-size:10px; letter-spacing:.06em;
@@ -54,23 +56,28 @@ main{max-width:640px; margin:0 auto; padding:16px 18px 8px;}
 .ghost:hover{border-color:var(--wisteria); color:var(--violet);}
 .ghost.kept{background:var(--violet); border-color:var(--violet); color:#fff;}
 .care{display:flex; gap:12px; align-items:flex-start;}
-.caremark{font-size:15px; color:var(--wisteria); line-height:1.4; flex:none;}
-.careline{font-family:'Fraunces', Georgia, serif; font-size:17px; font-weight:500;
-  margin:0 0 3px;}
-.carewhy{font-size:14px; font-weight:300; color:var(--faint); margin:0;}
-.pkcard{display:flex; gap:14px; align-items:center;}
+.caremark{font-size:15px; color:var(--wisteria); line-height:1.5; flex:none;}
+.careline{font-family:var(--disp); font-size:16px; font-weight:500;
+  margin:0 0 3px; letter-spacing:-.01em;}
+.carewhy{font-size:13.5px; font-weight:300; color:var(--faint); margin:0;}
+.pkcard{display:flex; gap:14px; align-items:flex-start;}
 .pkimg{width:92px; height:92px; flex:none; background:var(--bloom);
   border-radius:3px; display:flex; align-items:center; justify-content:center;}
 .pkimg img{width:84px; height:84px; object-fit:contain;}
-.pkfall{font-family:'Fraunces',serif; font-size:30px; color:var(--wisteria);}
-.pkname{font-family:'Fraunces', Georgia, serif; font-size:17px; font-weight:500;
-  margin:0 0 3px;}
+.pkfall{font-family:var(--disp); font-size:30px; color:var(--wisteria);}
+.pkname{font-family:var(--disp); font-size:16px; font-weight:600;
+  margin:0 0 1px; letter-spacing:-.01em;}
 .pkdex{font-family:var(--mono); font-size:10px; color:var(--faint);
-  letter-spacing:.05em; margin-left:6px;}
-.pknote{font-size:14px; font-weight:300; line-height:1.5; margin:0;}
-.skyline{font-size:16px; font-weight:300; font-style:italic; margin:0 0 12px;
+  letter-spacing:.05em; margin-left:6px; font-weight:400;}
+.pkgenus{font-family:var(--mono); font-size:10px; letter-spacing:.05em;
+  text-transform:uppercase; color:var(--faint); margin:0 0 6px;}
+.pkflavor{font-size:13.5px; font-weight:300; line-height:1.55; margin:0 0 6px;
+  color:var(--ink);}
+.pknote{font-size:13.5px; font-weight:300; font-style:italic; line-height:1.55;
+  margin:0; color:var(--violet);}
+.skyline{font-size:15px; font-weight:300; font-style:italic; margin:0 0 12px;
   padding-bottom:12px; border-bottom:1px solid var(--line);}
-.chart{width:100%; border-collapse:collapse; font-size:14px; font-weight:300;}
+.chart{width:100%; border-collapse:collapse; font-size:13.5px; font-weight:300;}
 .chart td{padding:6px 4px; border-bottom:1px solid var(--line);}
 .chart td:first-child{font-family:var(--mono); font-size:10px;
   letter-spacing:.05em; text-transform:uppercase; color:var(--faint); width:34%;}
@@ -79,14 +86,15 @@ main{max-width:640px; margin:0 auto; padding:16px 18px 8px;}
 .kept:last-child{border-bottom:none;}
 .kmeta{font-family:var(--mono); font-size:10px; letter-spacing:.05em;
   text-transform:uppercase; color:var(--faint); margin-bottom:3px;}
-.ktitle{font-family:'Fraunces',serif; font-size:15px; font-weight:500; margin:0;}
-.kbody{font-size:14px; font-weight:300; color:var(--faint); margin:4px 0 0;}
+.ktitle{font-family:var(--disp); font-size:14.5px; font-weight:600; margin:0;
+  letter-spacing:-.01em;}
+.kbody{font-size:13.5px; font-weight:300; color:var(--faint); margin:4px 0 0;}
 .krm{background:none; border:none; color:var(--faint); font-family:var(--mono);
   font-size:10px; text-transform:uppercase; letter-spacing:.05em; cursor:pointer;
   padding:4px 0 0;}
 .krm:hover{color:var(--violet);}
 .empty{text-align:center; color:var(--faint); font-style:italic;
-  padding:22px 0; font-size:15px; font-weight:300;}
+  padding:22px 0; font-size:14px; font-weight:300;}
 .foot{text-align:center; font-family:var(--mono); font-size:10px;
   letter-spacing:.05em; color:var(--faint); padding:26px 18px 8px;}
 button:focus-visible{outline:2px solid var(--violet); outline-offset:2px;}
@@ -110,10 +118,12 @@ button:focus-visible{outline:2px solid var(--violet); outline-offset:2px;}
 "use strict";
 /* ------------------------------------------------------------------
    Wisteria · one screen, one file, no dependencies, localStorage only.
+   Reading library: 41 hand-written + (11 placements x 63 principles)
+   = 734 unique daily readings, a hair over two years.
 ------------------------------------------------------------------ */
 
-const LS_KEY  = "wisteria.v2";
-const PK_KEY  = "wisteria.pkcache";
+const LS_KEY = "wisteria.v2";
+const PK_KEY = "wisteria.pkcache";
 
 let store = loadStore();
 let pkCache = loadCache();
@@ -146,10 +156,8 @@ const CHART = [
   ["Uranus","Aquarius"],["Neptune","Capricorn"],["Pluto","Sagittarius · 6th house"]
 ];
 
-/* ---------- readings: placement + Buddhist / nature principle ----------
-   t: title · p: placement · sky: the one-line summary above her chart
-   b: body · br: the small practice                                     */
-const READINGS = [
+/* ---------- hand-written readings ---------- */
+const HAND = [
 {t:"Water finds its level", p:"Pisces Sun",
  sky:"Your Pisces Sun is asking for softness today, not force.",
  b:"Your Sun lives in the last sign, the ocean where every river ends. Water never argues its way downhill; it simply keeps moving and arrives anyway. Whatever feels blocked today does not need to be pushed. It needs time, and time is the one thing you actually have.",
@@ -316,6 +324,159 @@ const READINGS = [
  br:"Whatever showed up in you today, offer it a metaphorical cup of tea."},
 ];
 
+/* ---------- generated readings: 11 placements x 63 principles ---------- */
+const PLACEMENTS = [
+{p:"Pisces Sun",
+ lore:"Your Sun lives in Pisces, the ocean at the end of every river, wide enough to hold whatever today carries in.",
+ sky:["Your Pisces Sun favors softness over force today.","Your Pisces Sun is wide enough for today. Nothing needs pushing."]},
+{p:"Scorpio Moon",
+ lore:"Your Scorpio Moon feels today at full depth, and depth has never once broken you.",
+ sky:["Your Scorpio Moon is running deep today, which is not a problem to solve.","Your Scorpio Moon would rather feel it fully once than half-feel it twice."]},
+{p:"Gemini Rising",
+ lore:"You meet this day with Gemini rising: light on your feet, interested in everything, obligated to none of it.",
+ sky:["Gemini rising wants to notice things today, not fix them.","Gemini rising gives today a fresh face and no obligations."]},
+{p:"Pisces Mercury",
+ lore:"Your Mercury thinks in tides and images, so today's thoughts may drift a while before they land, and that is how they land.",
+ sky:["Pisces Mercury says the fog is allowed today.","Pisces Mercury is thinking in tides today. Let it."]},
+{p:"Pisces Venus · 9th house",
+ lore:"Your Venus loves from Pisces in the ninth house: widely, gently, and often toward horizons you have not reached yet.",
+ sky:["Venus in your ninth house is looking at the horizon again today.","Venus in Pisces makes today's tenderness the long-distance kind."]},
+{p:"Libra Mars · 4th house",
+ lore:"Your Mars works from Libra in the fourth house, defending the peace of the place you live, inside and out.",
+ sky:["Mars in Libra counts keeping your peace as today's victory.","Mars in your fourth house is guarding the quiet at home today."]},
+{p:"Aquarius Jupiter · 8th house",
+ lore:"Your Jupiter grows from Aquarius in the eighth house, where endings quietly become material for beginnings.",
+ sky:["Jupiter in your eighth house is turning something old into soil today.","Jupiter in Aquarius finds today's luck in what is shared."]},
+{p:"Aries Saturn · 10th house",
+ lore:"Your Saturn sits in Aries in the tenth house, asking for slow building in a sign that would rather sprint.",
+ sky:["Saturn in your tenth house is growing roots today, which look like nothing.","Saturn says today's slow is tomorrow's smooth."]},
+{p:"Aquarius Uranus",
+ lore:"Your Uranus in Aquarius insists, quietly and permanently, that things can be different.",
+ sky:["Uranus in Aquarius says today's change can be small and still count.","Uranus in Aquarius turns one tiny difference into today's revolution."]},
+{p:"Capricorn Neptune",
+ lore:"Your Neptune dreams in Capricorn: in stone and timber, in visions that want one real step taken toward them.",
+ sky:["Neptune in Capricorn wants one soft dream given one hard edge today.","Neptune in Capricorn builds the dream slowly, which is the only way it builds."]},
+{p:"Sagittarius Pluto · 6th house",
+ lore:"Your Pluto works from the sixth house, hiding your deepest transformations inside completely ordinary routines.",
+ sky:["Pluto in your sixth house is doing quiet work inside today's routine.","Pluto says today's small habit is moving something enormous."]},
+];
+
+const PRINCIPLES = [
+{tt:"Wabi-sabi", x:"Nothing in nature is finished, perfect, or permanent, and nothing needs to be. The cracked bowl holds tea exactly as well, and the crack is where the light gets interesting.", br:"Let one imperfect thing stay imperfect today, on purpose."},
+{tt:"The long exhale", x:"The body has a built-in signal that the emergency is over, and it is the out-breath. Lengthen it and the nervous system, obedient as tide to moon, begins to stand down.", br:"Breathe in for four, out for six. Three rounds."},
+{tt:"Kintsugi", x:"In Japan a broken bowl is mended with gold, so the repair becomes the most valuable part. What has been mended in you is not the damaged part of your story. It is the gilded part.", br:"Name one mended place in you and call it gold, just once."},
+{tt:"Moss", x:"Moss has no roots, asks for almost nothing, and covers the forest anyway. It thrives in the shade other plants flee, one quarter-inch at a time. Slow and soft is a complete strategy.", br:"Do one small soft thing and let it be the whole ambition."},
+{tt:"The fallow field", x:"Farmers rest a field on purpose, because soil that never rests stops giving. A fallow season is not the farm failing. It is the farm planning.", br:"Leave one hour today deliberately unplanted."},
+{tt:"Migration", x:"No bird flies to the other hemisphere in a day. Migration is thousands of small wingbeats, most of them unremarkable, each one counted by no one and essential anyway.", br:"Take today's one wingbeat and skip the math on the distance."},
+{tt:"The lighthouse", x:"A lighthouse does not swim out to rescue ships. It stands where it is and shines, and that turns out to be enough. You are allowed to help by simply being steady.", br:"Stand where you are today. Shine at whatever wattage you have."},
+{tt:"Tide pools", x:"Between tides, small pools hold entire thriving worlds: anemones, hermit crabs, whole economies in a bowl of rock. A small life on a given day can still be a complete one.", br:"Make one small corner of today complete: a tidy desk, a good cup, a finished page."},
+{tt:"The seed's dark", x:"Every seed spends its first chapter in total darkness, and no gardener stands over it demanding visible progress. Germination is real work that looks exactly like nothing.", br:"If today looks like nothing from outside, log it as germination."},
+{tt:"Snowmelt", x:"The mountain releases its winter one trickle at a time, and that slow release is what keeps the valley alive all summer. What you saved up in the hard season is feeding you now.", br:"Notice one strength today that a difficult season left behind."},
+{tt:"The spider's patience", x:"When the web tears, the spider does not review what went wrong at length. It rebuilds, in the same corner, with the same silk, and usually catches something by morning.", br:"Rebuild one small torn thing today without the postmortem."},
+{tt:"Deadwood", x:"A standing dead tree feeds more life than most living ones: owls, beetles, fungi, whole apartments of it. What is over is not useless. It is habitat for what is next.", br:"Name one finished thing that is quietly still feeding you."},
+{tt:"The middle branch", x:"Birds do not perch at the exposed top of the tree or in the dark at the bottom; they pick the sheltered middle. There is a middle branch in most situations, and it is usually free.", br:"In one decision today, look for the middle branch and sit on it."},
+{tt:"Fog lifting", x:"Fog does not lift because anyone argues with it. It lifts because the sun rises, which was going to happen anyway. Some confusions only need morning, not effort.", br:"Pick one confusion and agree to leave it alone until tomorrow."},
+{tt:"The pearl", x:"A pearl is an irritation the oyster could not remove, so it wrapped the thing in layer after layer of patience until it became valuable. Not solved. Transformed.", br:"Take one irritation and give it one thin layer of patience."},
+{tt:"River stones", x:"The smoothest stones did not travel to become smooth. They stayed in the river and let the water do years of gentle work. Staying put through the current counts as progress.", br:"Stay in one uncomfortable-but-right place today without fleeing it."},
+{tt:"The nurse log", x:"In old forests, fallen trees become nurseries: whole rows of new trees grow out of the fallen one's back. What fell in your life is allowed to become what the next thing grows on.", br:"Plant one small intention on top of one old disappointment."},
+{tt:"Evening primrose", x:"The evening primrose blooms at dusk, when the garden's opinion has gone to bed. It keeps its own hours and gets pollinated anyway. Your timing does not need to match anyone's.", br:"Do one thing on your schedule today, unapologetically."},
+{tt:"The chrysalis", x:"Inside the chrysalis, the caterpillar does not politely grow wings. It dissolves almost entirely first. If things feel formless right now, formless is a documented stage.", br:"Allow one part of your life to be mid-dissolve without a deadline."},
+{tt:"Lichen", x:"Lichen is two organisms that decided to be one thing, and together they can live on bare rock in arctic wind. Partnership is a survival technology. So is asking.", br:"Let one person help you with one thing today."},
+{tt:"First light", x:"Dawn does not strain. The light arrives gradually, evenly, without a single push, and the whole sky changes anyway. Effortless does not mean lazy. Sometimes it means aligned.", br:"Find one task today that goes easier when you stop gripping it."},
+{tt:"The watershed", x:"Every drop that falls on the mountain, wherever it lands, finds its way to the sea eventually. There is more than one right path through today, and most of them arrive.", br:"Take the path of least resistance once today and notice it still counts."},
+{tt:"Mycelium", x:"Under every forest runs a network of fungal threads passing sugar and signals between trees, invisible and essential. Most support is like that. You are more held than you can see.", br:"Send one small signal down the network: a text, a thank you, a check-in."},
+{tt:"Cairns", x:"On foggy trails, hikers stack small stones so the next person knows the way. Every hard day you have survived left a cairn for this one. The trail is marked.", br:"Recall one hard day you already crossed. That is a cairn. Walk past it."},
+{tt:"The estuary", x:"Where the river meets the sea, fresh and salt water mix, and it is the richest water on earth. The in-between places, the not-quite-this and not-yet-that, are where things grow fastest.", br:"If you are between chapters, write today down as estuary time."},
+{tt:"Petrichor", x:"The smell after rain has its own word, because relief is real enough to name. Dry spells end. They always have, every single time, and the earth remembers how to receive.", br:"When one small relief arrives today, stop for two seconds and smell the rain."},
+{tt:"The dormant bulb", x:"A tulip bulb in January is not behind schedule. Dormancy is in the design; the cold is literally required for the bloom. Your quiet seasons are load-bearing.", br:"If you are dormant right now, cross 'catch up' off today's list."},
+{tt:"Driftwood", x:"Driftwood did not choose its route, and the sea shaped it anyway into something smooth and worth picking up. Being carried for a stretch does not ruin the material.", br:"Let one thing carry you today: a routine, a friend, a current."},
+{tt:"The murmuration", x:"A thousand starlings turn together with no leader, each bird tracking only its seven nearest neighbors. You do not need the whole plan. You need your next seven feet.", br:"Ignore the horizon once today and handle only the next seven feet."},
+{tt:"Halcyon days", x:"The old sailors named the calm weeks of midwinter after a kingfisher nesting on the sea. Calm can arrive in the middle of the hard season, uninvited and real. Take it when it comes.", br:"If a calm hour shows up today, do not audit it. Nest in it."},
+{tt:"The taproot", x:"Some plants grow one deep root instead of many shallow ones, and they survive the droughts that take everything else. One deep thing, one person, one practice, outholds a dozen shallow ones.", br:"Water one deep thing today and let the shallow ones wait."},
+{tt:"Second growth", x:"Forests regrow after fire, and the new growth is not a lesser forest. It is a different one, often more open to light. What regrows after a hard season does not have to match what burned.", br:"Let one part of the new version of you differ from the old, guilt-free."},
+{tt:"The shorebird", x:"Sandpipers feed at the exact line where the wave retreats, all timing and no force. There is a right moment for most things, and shoving does not move it closer.", br:"Wait for one right moment today instead of forcing an early one."},
+{tt:"Windfall", x:"Some fruit does not need to be climbed for. It ripens, lets go, and lands at your feet while you were doing something else. Not everything good is earned through strain.", br:"Accept one easy good thing today without checking for the catch."},
+{tt:"The quiet pond", x:"At dawn the pond is glass, and every visiting heron and low star is perfectly recorded on it. The stillest hour of the day sees the most. Yours does too.", br:"Claim ten still minutes and let the day print itself on you gently."},
+{tt:"Understory", x:"Beneath the tallest trees, an entire layer of the forest thrives on filtered light. Not everything needs the full sun of attention to grow. Some of your best growth is happening in the shade.", br:"Tend one private, unadvertised thing today."},
+{tt:"The molt", x:"To grow, a crab must first go soft, shed its armor, and wait, defenseless, while the new shell forms. Feeling unprotected during a change is not a sign it is going wrong.", br:"If you feel soft-shelled today, schedule gentleness, not judgment."},
+{tt:"Erratics", x:"Glaciers carried boulders hundreds of miles and set them down in fields where they match nothing, and those stones became landmarks. Being out of place can be a way of being notable.", br:"Where you feel like you do not fit today, consider that you might be the landmark."},
+{tt:"Sap rising", x:"In late winter the sap rises for weeks before a single leaf shows. The tree is fully at work while looking completely bare. So, often, are you.", br:"Trust one bare-looking area of your life to be quietly in motion."},
+{tt:"The eddy", x:"Behind every boulder in a river there is an eddy: a pocket where the water rests while the current roars past. Rest is built into the river. It is allowed to be built into your day.", br:"Find one eddy today, ten minutes out of the current, and sit in it."},
+{tt:"Neap tide", x:"Twice a month the tides go gentle, and the sea does not apologize for it. Lower-energy days are in the orbit, not in your character. Plan like a sailor, not like a judge.", br:"If today is a neap tide, shorten the list instead of lengthening the verdict."},
+{tt:"Cloud shadows", x:"Watch a hillside and the cloud shadows just keep moving: darkness arrives, slides across, and leaves without paperwork. Most moods are exactly this. Passing weather over unchanged ground.", br:"When a dark mood crosses today, say 'cloud shadow' and let it slide."},
+{tt:"The hedgerow", x:"A hedgerow is a small, unglamorous strip of tangle, and half the countryside's life shelters in it. Modest shelter is real shelter. Your small comforts are doing serious work.", br:"Reinforce one small comfort today: the good mug, the warm lamp, the soft blanket."},
+{tt:"Bioluminescence", x:"Some creatures, finding the deep sea dark, simply make their own light. No complaint filed, no sun requested. On dim days you carry your own small chemistry of brightness.", br:"Generate one small light today: music, a candle, a kind message."},
+{tt:"The perennial", x:"Perennials die back to nothing every winter and return every spring without being asked, because the root remembers. Whatever you feel cut back to, the root of you remembers.", br:"Name one thing about you that always comes back. It is coming back."},
+{tt:"Leaf fall", x:"Trees do not lose their leaves; they release them, sealing each stem deliberately before letting go. Letting go, done well, is an act of the tree's own choosing. It can be yours too.", br:"Release one small thing today deliberately, with the stem sealed."},
+{tt:"The aquifer", x:"Under the driest land there is often deep water, saved from rains that fell centuries ago. You have reserves you have never needed to check. Dry surface, deep well.", br:"Remind yourself: the surface being dry today says nothing about the well."},
+{tt:"Morning frost", x:"Frost looks total at seven and is gone by ten, every time. Some of what feels frozen this morning is on the same schedule. Give the sun a few hours before concluding anything.", br:"Postpone one negative conclusion until after lunch."},
+{tt:"The heartwood", x:"The center of an old tree is no longer alive, and it is what holds the whole tree up. Your past, even the parts that are over, is structural. It is holding you up right now.", br:"Thank one old ring of yourself for the holding."},
+{tt:"Prevailing winds", x:"On windy coasts, trees grow bent with the wind and thrive that way, flagged and flourishing. Adaptation is not defeat. The shape you have taken around your life is a living shape.", br:"Find one place you have bent and call it thriving, because it is."},
+{tt:"The oxbow", x:"Sometimes a river abandons a bend, and the bend becomes a lake: calm, full of herons, entirely its own place. Paths you left behind can become their own good places. So can you.", br:"Bless one abandoned plan today. It is a lake now."},
+{tt:"Pumice", x:"Pumice is stone that has been through so much fire it floats. Some things that were supposed to sink you turn out to be exactly why you do not sink.", br:"Recall one fire that, in the end, made you lighter."},
+{tt:"The rookery", x:"Herons, the great solitary hunters, nest in colonies. Even the most self-sufficient creature on the marsh rests communally. Needing company for the resting part is standard equipment.", br:"Rest near someone today, even quietly, even virtually."},
+{tt:"Dew", x:"Dew is water gathered from thin air, enough for a morning, arriving without a single cloud. Some days provide only small refreshment. Small refreshment is refreshment.", br:"Take today's small good things at face value. They count in full."},
+{tt:"The switchback", x:"Mountain trails zigzag because the straight route up is a fall. If your progress keeps changing direction, that may be the engineering, not the error.", br:"Reframe one detour today as a switchback. Same summit, survivable grade."},
+{tt:"Old growth", x:"Some things exist only in forests that have been left alone for centuries: certain mosses, certain owls, a certain quiet. Some qualities in you can only come with time, and they are coming.", br:"List one way you are better at being you than five years ago."},
+{tt:"The intertidal hour", x:"The shore belongs to the sea twice a day and to the land twice a day, and it is the richer for never picking one. Belonging to two worlds is not a lack of identity. It is extra habitat.", br:"Let yourself be two things at once today without brokering a merger."},
+{tt:"The return", x:"Salmon cross an ocean and find the exact stream they were born in, by smell, by memory, by something no one fully understands. Some part of you always knows the way back to yourself.", br:"Do one thing today that smells like home water."},
+{tt:"Wintering", x:"Animals do not fight winter. They reduce, burrow, slow down, and emerge intact on the other side. Pulling life in close for a season is a survival strategy with an excellent record.", br:"If you are wintering, cut today to essentials and call it wisdom."},
+{tt:"The clearing", x:"Healthy forests keep clearings: open, sunlit gaps where nothing much grows so that everything can breathe. Your schedule is a forest. It also needs clearings.", br:"Defend one blank space in today and plant nothing in it."},
+{tt:"Rain shadow", x:"One side of a mountain gets the rain; the other side gets desert, through no fault of the desert. Some dry seasons are geography, not judgment. Placement, not performance.", br:"Take one hard circumstance today and file it under geography."},
+{tt:"The floodplain", x:"Rivers given room to flood are safe rivers; the disasters happen where they are walled in tight. Feelings work the same way. Room is what makes them safe.", br:"Give one feeling some floodplain today: a page, a walk, a phone call."},
+{tt:"Star navigation", x:"Migrating birds steer by stars they will never reach, and the not-reaching is fine, because steering was the point. Some of your ideals are for navigation, not for arrival.", br:"Let one ideal guide today's direction without demanding today's arrival."},
+];
+
+/* ---------- library assembly: 41 + 11x63 = 734 unique readings ---------- */
+function mulberry(seed){ return function(){
+  seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+  let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+  return ((t ^ t >>> 14) >>> 0) / 4294967296;
+};}
+function slotTitle(s){ return ("h" in s) ? HAND[s.h].t : PRINCIPLES[s.ci].tt; }
+function buildLib(){
+  const lib = [];
+  for(let h=0; h<HAND.length; h++) lib.push({h});
+  for(let pi=0; pi<PLACEMENTS.length; pi++)
+    for(let ci=0; ci<PRINCIPLES.length; ci++) lib.push({pi, ci});
+  const rnd = mulberry(20260716);
+  for(let i=lib.length-1; i>0; i--){
+    const j = Math.floor(rnd()*(i+1)); [lib[i],lib[j]] = [lib[j],lib[i]];
+  }
+  // Repair pass: no title may appear on two consecutive days, wraparound
+  // included, so a repeat is never felt even across the 2-year boundary.
+  const L = lib.length;
+  for(let pass=0; pass<3; pass++){
+    let fixed = true;
+    for(let i=0; i<L; i++){
+      const prev = lib[(i-1+L)%L], next = lib[(i+1)%L];
+      if(slotTitle(lib[i]) !== slotTitle(prev)) continue;
+      let swapped = false;
+      for(let j=(i+2)%L, step=0; step<L-3; j=(j+1)%L, step++){
+        const jp = lib[(j-1+L)%L], jn = lib[(j+1)%L];
+        if(slotTitle(lib[j]) === slotTitle(prev)) continue;
+        if(slotTitle(lib[j]) === slotTitle(next)) continue;
+        if(slotTitle(lib[i]) === slotTitle(jp)) continue;
+        if(slotTitle(lib[i]) === slotTitle(jn)) continue;
+        [lib[i],lib[j]] = [lib[j],lib[i]]; swapped = true; break;
+      }
+      if(!swapped) fixed = false;
+    }
+    if(fixed) break;
+  }
+  return lib;
+}
+const LIB = buildLib();
+function readingAt(n){
+  const slot = LIB[((n % LIB.length) + LIB.length) % LIB.length];
+  if("h" in slot) return HAND[slot.h];
+  const P = PLACEMENTS[slot.pi], C = PRINCIPLES[slot.ci];
+  return {t: C.tt, p: P.p, sky: P.sky[slot.ci % P.sky.length],
+          b: P.lore + " " + C.x, br: C.br};
+}
+function todayReading(){ return readingAt(dayNumber()); }
+
 /* ---------- one kindness for the body ----------
    Gentle, general, PCOS-supportive daily care. Not medical advice,
    never about weight, never a rule. One thing, offered.          */
@@ -357,13 +518,13 @@ const CARE = [
 {a:"Put your phone in another room for twenty minutes.", w:"The nervous system notices."},
 {a:"Do one thing today purely because it is pleasant.", w:"Joy is not the reward for good health management. It is part of it."},
 ];
+function todayCare(){ const n = dayNumber();
+  return CARE[(((n*11) % CARE.length) + CARE.length) % CARE.length]; }
 
 /* ---------- Pokemon ----------
-   Full National Dex through Gen 9 (1..1025), deterministically shuffled,
-   so the companion does not repeat for ~2 years 10 months.
-   Name and type come from PokeAPI and are cached forever on first view,
-   so recalled days work offline. Curated notes for the comfort favorites;
-   type-drawn notes for everyone else.                                  */
+   Full National Dex through Gen 9 (1..1025), deterministically shuffled:
+   no repeat companion for 1025 days. Name, genus, type, and a Pokedex
+   description come from PokeAPI, cached forever on first view.       */
 const DEX_MAX = 1025;
 
 const PK_NOTES = {
@@ -451,12 +612,6 @@ steel:["Steel types endure by staying calm. Not by force.","Strong and quiet, an
 stellar:["Something entirely new, and unbothered by having no category.","It is rare, and so is a person who keeps going gently."]
 };
 
-function mulberry(seed){ return function(){
-  seed |= 0; seed = seed + 0x6D2B79F5 | 0;
-  let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
-  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
-  return ((t ^ t >>> 14) >>> 0) / 4294967296;
-};}
 function dexOrder(){
   const a = []; for(let i=1;i<=DEX_MAX;i++) a.push(i);
   const rnd = mulberry(19980322);
@@ -464,10 +619,9 @@ function dexOrder(){
   return a;
 }
 const DEX = dexOrder();
-function todayDexId(){
-  const n = dayNumber();
-  return DEX[((n % DEX.length) + DEX.length) % DEX.length];
-}
+function dexIdFor(n){ return DEX[((n % DEX.length) + DEX.length) % DEX.length]; }
+function todayDexId(){ return dexIdFor(dayNumber()); }
+
 const NAME_FIX = {
   "mr-mime":"Mr. Mime", "mime-jr":"Mime Jr.", "mr-rime":"Mr. Rime",
   "type-null":"Type: Null", "nidoran-f":"Nidoran ♀", "nidoran-m":"Nidoran ♂",
@@ -482,20 +636,24 @@ function noteFor(id, types){
   if(PK_NOTES[id]) return PK_NOTES[id];
   const t = (types && types[0]) || "normal";
   const pool = TYPE_NOTES[t] || TYPE_NOTES.normal;
-  return pool[dayNumber() % pool.length];
+  return pool[((dayNumber() % pool.length) + pool.length) % pool.length];
 }
-
-/* ---------- daily selections ---------- */
-function todayReading(){ const n = dayNumber();
-  return READINGS[((n % READINGS.length) + READINGS.length) % READINGS.length]; }
-function todayCare(){ const n = dayNumber();
-  return CARE[(((n*11) % CARE.length) + CARE.length) % CARE.length]; }
+const GRIM = /\bdead\b|\bdie\b|\bdied\b|\bdeath\b|corpse|curse|\bhell\b|kidnap|drags? (it |them |people |children )?(away|off|into)|steal(s|ing)? .*(soul|life|spirit)|suffocat|graveyard|lifespan.*end|eats? (the )?(soul|dream)s?/i;
+function pickFlavor(entries){
+  const en = (entries || []).filter(e => e.language && e.language.name === "en")
+    .map(e => String(e.flavor_text || "").replace(/[\n\f\r\u00ad]+/g," ").replace(/\s+/g," ").trim())
+    .filter(s => s.length > 0);
+  if(!en.length) return "";
+  const gentle = en.find(s => !GRIM.test(s));
+  return gentle || en[0];
+}
 
 /* ---------- state ---------- */
 let expanded = false;
 let currentDay = dayNumber();
-let pk = {id: todayDexId(), name:null, note:null};
-const isKept = t => store.kept.some(k => k.t === t);
+let pk = {id: todayDexId(), name:null, genus:null, flavor:null, note:null};
+const kkey = r => r.t + "\u00a7" + r.p;
+const isKept = r => store.kept.some(k => (k.k || (k.t+"\u00a7"+k.p)) === kkey(r));
 
 /* ---------- render ---------- */
 const $ = s => document.querySelector(s);
@@ -503,7 +661,7 @@ function esc(s){ return String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;"
 
 function render(){
   $("#dateLbl").textContent = niceDate();
-  const r = todayReading(), c = todayCare(), kept = isKept(r.t);
+  const r = todayReading(), c = todayCare(), kept = isKept(r);
   $("#main").innerHTML = `
   <div class="eyebrow"><span>Today's reading</span></div>
   <div class="card">
@@ -529,11 +687,13 @@ function render(){
   <div class="eyebrow"><span>Pokemon of the day</span></div>
   <div class="card pkcard">
     <div class="pkimg" id="pkbox">
-      <img alt="" id="pkimg"
+      <img alt="${pk.name ? esc(pk.name) : "Today's Pokemon"}" id="pkimg"
         src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pk.id}.png" />
     </div>
     <div>
       <p class="pkname">${pk.name ? esc(pk.name) : "Someone is on the way"}<span class="pkdex">#${String(pk.id).padStart(4,"0")}</span></p>
+      ${pk.genus ? `<p class="pkgenus">${esc(pk.genus)}</p>` : ""}
+      ${pk.flavor ? `<p class="pkflavor">${esc(pk.flavor)}</p>` : ""}
       <p class="pknote">${pk.note ? esc(pk.note) : "Arriving as soon as there's a signal."}</p>
     </div>
   </div>
@@ -546,12 +706,12 @@ function render(){
 
   <div class="eyebrow"><span>Kept readings</span><span class="n">${store.kept.length || ""}</span></div>
   <div class="card">
-    ${store.kept.length ? store.kept.slice().reverse().map(k=>`
+    ${store.kept.length ? store.kept.slice().reverse().map((k,i)=>`
       <div class="kept">
         <div class="kmeta">${esc(k.d)} · ${esc(k.p)}</div>
         <p class="ktitle">${esc(k.t)}</p>
         <p class="kbody">${esc(k.b)}</p>
-        <button class="krm" data-rm="${esc(k.t)}">Release</button>
+        <button class="krm" data-rm="${store.kept.length-1-i}">Release</button>
       </div>`).join("")
       : `<div class="empty">Anything you keep will wait for you here.</div>`}
   </div>`;
@@ -562,35 +722,62 @@ function wire(){
   $("#expand").onclick = () => { expanded = !expanded; render(); };
   $("#keep").onclick = () => {
     const r = todayReading();
-    if(isKept(r.t)) store.kept = store.kept.filter(k => k.t !== r.t);
-    else store.kept.push({t:r.t, p:r.p, b:r.b, d:dkey()});
+    if(isKept(r)) store.kept = store.kept.filter(k => (k.k || (k.t+"\u00a7"+k.p)) !== kkey(r));
+    else store.kept.push({k:kkey(r), t:r.t, p:r.p, b:r.b, d:dkey()});
     saveStore(); render();
   };
   document.querySelectorAll("[data-rm]").forEach(b => {
-    b.onclick = () => { store.kept = store.kept.filter(k => k.t !== b.dataset.rm); saveStore(); render(); };
+    b.onclick = () => {
+      const i = parseInt(b.dataset.rm, 10);
+      if(Number.isInteger(i) && i >= 0 && i < store.kept.length){
+        store.kept.splice(i, 1); saveStore(); render();
+      }
+    };
   });
   const img = $("#pkimg");
   if(img) img.onerror = () => { const box = $("#pkbox"); if(box) box.innerHTML = `<span class="pkfall">✶</span>`; };
 }
 
 /* ---------- pokemon lookup, cached forever after first view ---------- */
+function fetchDex(id){
+  return Promise.all([
+    fetch("https://pokeapi.co/api/v2/pokemon/" + id).then(r => r.ok ? r.json() : Promise.reject()),
+    fetch("https://pokeapi.co/api/v2/pokemon-species/" + id).then(r => r.ok ? r.json() : Promise.reject())
+  ]).then(([pd, sd]) => {
+    const types = (pd.types || []).map(x => x.type.name);
+    const genus = ((sd.genera || []).find(g => g.language && g.language.name === "en") || {}).genus || "";
+    return {n: titleName(pd.name), t: types, g: genus, f: pickFlavor(sd.flavor_text_entries)};
+  });
+}
 function loadPokemon(){
   const id = pk.id, hit = pkCache[id];
-  if(hit){ pk.name = hit.n; pk.note = noteFor(id, hit.t); render(); return; }
-  fetch("https://pokeapi.co/api/v2/pokemon/" + id)
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(d => {
-      const types = (d.types || []).map(x => x.type.name);
-      pkCache[id] = {n: titleName(d.name), t: types};
-      saveCache();
-      pk.name = pkCache[id].n; pk.note = noteFor(id, types);
-      render();
-    })
-    .catch(() => {
-      pk.name = "Pokemon #" + id;
-      pk.note = "Your companion is here in spirit. Its name will load next time there's a signal.";
-      render();
-    });
+  if(hit && "g" in hit){
+    pk.name = hit.n; pk.genus = hit.g; pk.flavor = hit.f; pk.note = noteFor(id, hit.t);
+    render(); prefetchTomorrow(); return;
+  }
+  fetchDex(id).then(d => {
+    pkCache[id] = d; saveCache();
+    pk.name = d.n; pk.genus = d.g; pk.flavor = d.f; pk.note = noteFor(id, d.t);
+    render(); prefetchTomorrow();
+  }).catch(() => {
+    if(hit){ // old cache format without genus/flavor: still show what we have
+      pk.name = hit.n; pk.note = noteFor(id, hit.t); render(); return;
+    }
+    pk.name = "Pokemon #" + id;
+    pk.note = "Your companion is here in spirit. Its details will load next time there's a signal.";
+    render();
+  });
+}
+/* Quietly cache tomorrow's companion so mornings load instantly,
+   and warm the artwork into the browser cache too. */
+function prefetchTomorrow(){
+  try{
+    const nid = dexIdFor(dayNumber() + 1);
+    const im = new Image();
+    im.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + nid + ".png";
+    if(pkCache[nid] && "g" in pkCache[nid]) return;
+    fetchDex(nid).then(d => { pkCache[nid] = d; saveCache(); }).catch(()=>{});
+  }catch(e){}
 }
 
 /* ---------- day rollover ----------
@@ -601,7 +788,7 @@ function checkDay(){
   if(n === currentDay) return;
   currentDay = n;
   expanded = false;
-  pk = {id: todayDexId(), name:null, note:null};
+  pk = {id: todayDexId(), name:null, genus:null, flavor:null, note:null};
   render();
   loadPokemon();
 }
