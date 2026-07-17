@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <meta name="apple-mobile-web-app-title" content="Wisteria" />
-<meta name="theme-color" content="#F7F5FA" />
+<meta name="theme-color" content="#F7F4FB" />
 <title>Wisteria</title>
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%235B3FA8'/%3E%3Ctext x='50' y='66' font-size='46' text-anchor='middle' fill='%23F7F5FA' font-family='Helvetica,Arial,sans-serif'%3E%E2%9C%B6%3C/text%3E%3C/svg%3E" />
 <style>
@@ -31,7 +31,7 @@ body{margin:0; color:var(--ink);
   min-height:100vh; padding-bottom:calc(40px + env(safe-area-inset-bottom));}
 ::selection{background:var(--petal-a); color:var(--plum);}
 
-/* ---- the vine: wisteria draped over the doorway ---- */
+/* ---- the vine ---- */
 .vinewrap{position:relative; height:96px; max-width:640px; margin:0 auto;
   pointer-events:none; overflow:visible;}
 .vine{position:absolute; top:0; left:0; width:100%; height:150px; overflow:visible;}
@@ -49,9 +49,15 @@ header{max-width:640px; margin:0 auto; padding:0 18px;}
 h1{font-family:var(--disp); font-size:34px; font-weight:700;
   margin:0; letter-spacing:-.03em; color:var(--plum);}
 h1 .dot{color:var(--violet);}
+.greet{font-size:15.5px; font-weight:300; font-style:italic; color:var(--plum);
+  margin:6px 0 0;}
 .openrule{height:3px; background:var(--ink); margin:12px 0 0;}
 
 main{max-width:640px; margin:0 auto; padding:16px 18px 8px;}
+.lovecard{background:var(--bloom); border:1px solid var(--petal-a); border-radius:3px;
+  padding:14px 16px; margin:6px 0 2px; font-size:15px; font-weight:300;
+  font-style:italic; color:var(--plum); display:flex; gap:10px; align-items:flex-start;}
+.lovecard .bl{color:var(--violet); font-style:normal; flex:none;}
 .eyebrow{font-family:var(--mono); font-size:10px; letter-spacing:.08em;
   text-transform:uppercase; color:var(--violet); margin:24px 0 6px;
   display:flex; justify-content:space-between; align-items:baseline;}
@@ -67,7 +73,7 @@ main{max-width:640px; margin:0 auto; padding:16px 18px 8px;}
 .rbody{font-size:15px; font-weight:300; line-height:1.65; margin:0;}
 .rbody.fold{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
   overflow:hidden;}
-.breath{margin-top:12px; padding-top:10px; border-top:1px solid var(--line);
+.breathline{margin-top:12px; padding-top:10px; border-top:1px solid var(--line);
   font-size:13.5px; font-style:italic; color:var(--faint);}
 .rowbtns{display:flex; gap:8px; margin-top:12px;}
 .ghost{background:none; border:1px solid var(--line); border-radius:3px;
@@ -76,12 +82,22 @@ main{max-width:640px; margin:0 auto; padding:16px 18px 8px;}
 .ghost:hover{border-color:var(--wisteria); color:var(--violet);}
 .ghost.kept{background:var(--violet); border-color:var(--violet); color:#fff;}
 
-.care{display:flex; gap:12px; align-items:flex-start;
-  border-left:3px solid var(--wisteria);}
-.caremark{font-size:15px; color:var(--wisteria); line-height:1.5; flex:none;}
-.careline{font-family:var(--disp); font-size:16.5px; font-weight:500;
+/* two-choice kindness */
+.carechoice{display:flex; flex-direction:column; gap:8px;}
+.careopt{display:flex; gap:12px; align-items:flex-start; text-align:left;
+  background:var(--card); border:1px solid var(--line); border-radius:3px;
+  padding:13px 14px; cursor:pointer; font-family:var(--body); width:100%;}
+.careopt:hover{border-color:var(--wisteria);}
+.careopt.picked{border-color:var(--violet); background:var(--bloom);}
+.careopt .tick{flex:none; width:20px; height:20px; border:1px solid var(--line);
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:11px; color:transparent; margin-top:2px;}
+.careopt.picked .tick{background:var(--violet); border-color:var(--violet); color:#fff;}
+.careline{font-family:var(--disp); font-size:15.5px; font-weight:500;
   margin:0 0 3px; letter-spacing:-.01em; color:var(--plum);}
-.carewhy{font-size:13.5px; font-weight:300; color:var(--faint); margin:0;}
+.carewhy{font-size:13px; font-weight:300; color:var(--faint); margin:0;}
+.careor{text-align:center; font-family:var(--mono); font-size:10px;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--wisteria); margin:0;}
 
 .pkcard{display:flex; gap:14px; align-items:flex-start;}
 .pkimg{width:96px; height:96px; flex:none; background:var(--bloom);
@@ -99,17 +115,19 @@ main{max-width:640px; margin:0 auto; padding:16px 18px 8px;}
 .pknote{font-size:13.5px; font-weight:300; font-style:italic; line-height:1.55;
   margin:0; color:var(--violet);}
 
-.skyline{font-size:15.5px; font-weight:300; font-style:italic; margin:0 0 12px;
-  padding-bottom:12px; border-bottom:1px solid var(--line); color:var(--plum);}
-.chart{width:100%; border-collapse:collapse; font-size:13.5px; font-weight:300;}
-.chart td{padding:6px 4px; border-bottom:1px solid var(--line);}
-.chart td.g{width:30px; text-align:center; padding-left:0;}
-.glyph{display:inline-flex; align-items:center; justify-content:center;
-  width:22px; height:22px; border-radius:50%; background:var(--bloom);
-  color:var(--violet); font-size:12px; font-family:var(--body); font-weight:400;}
-.chart td.pl{font-family:var(--mono); font-size:10px;
-  letter-spacing:.05em; text-transform:uppercase; color:var(--faint); width:30%;}
-.chart tr:last-child td{border-bottom:none;}
+/* breathing widget */
+.breathwrap{display:flex; flex-direction:column; align-items:center;
+  padding:6px 0 10px;}
+.bstage{width:200px; height:200px; flex:none; display:flex;
+  align-items:center; justify-content:center; overflow:hidden;}
+.bcircle{width:112px; height:112px; border-radius:50%;
+  background:radial-gradient(circle at 38% 32%, var(--petal-a), var(--petal-c));
+  box-shadow:0 0 0 10px rgba(167,139,212,.12), 0 0 0 20px rgba(167,139,212,.06);
+  transform:scale(1); will-change:transform;}
+.bword{font-family:var(--disp); font-size:14px; font-weight:500; color:var(--plum);
+  letter-spacing:.02em; margin:2px 0 2px; min-height:20px;}
+.bcount{font-family:var(--mono); font-size:10px; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--faint);}
 
 .kept{padding:12px 2px; border-bottom:1px solid var(--line);}
 .kept:last-child{border-bottom:none;}
@@ -195,6 +213,7 @@ button:focus-visible{outline:2px solid var(--violet); outline-offset:2px;}
     <span id="dateLbl"></span>
   </div>
   <h1>Wisteria<span class="dot">.</span></h1>
+  <p class="greet" id="greet"></p>
   <div class="openrule"></div>
 </header>
 
@@ -204,9 +223,9 @@ button:focus-visible{outline:2px solid var(--violet); outline-offset:2px;}
 <script>
 "use strict";
 /* ------------------------------------------------------------------
-   Wisteria · one screen, one file, no dependencies, localStorage only.
-   Reading library: 41 hand-written + (11 placements x 63 principles)
-   = 734 unique daily readings, a hair over two years.
+   Wisteria - one screen, one file, no dependencies, localStorage only.
+   Reading library: 26 hand-written + (12 lenses x 63 principles)
+   = 782 unique daily readings, a little over two years.
 ------------------------------------------------------------------ */
 
 const LS_KEY = "wisteria.v2";
@@ -227,228 +246,119 @@ function loadCache(){
 }
 function saveCache(){ try{ localStorage.setItem(PK_KEY, JSON.stringify(pkCache)); }catch(e){} }
 
-/* ---------- dates ---------- */
+/* ---------- dates, greeting, special days ---------- */
 function dkey(d){ d=d||new Date();
   return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
 function dayNumber(d){ d=d||new Date();
   return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())/86400000); }
 function niceDate(d){ d=d||new Date();
   return d.toLocaleDateString("en-US",{weekday:"long", month:"long", day:"numeric"}); }
-
-/* ---------- her chart (from Co–Star) ---------- */
-const GLYPHS = {Sun:"\u2609", Moon:"\u263D", Rising:"\u2191", Mercury:"\u263F",
-  Venus:"\u2640", Mars:"\u2642", Jupiter:"\u2643", Saturn:"\u2644",
-  Uranus:"\u2645", Neptune:"\u2646", Pluto:"\u2647"};
-const CHART = [
-  ["Sun","Pisces"],["Moon","Scorpio"],["Rising","Gemini · 1st house"],
-  ["Mercury","Pisces"],["Venus","Pisces · 9th house"],["Mars","Libra · 4th house"],
-  ["Jupiter","Aquarius · 8th house"],["Saturn","Aries · 10th house"],
-  ["Uranus","Aquarius"],["Neptune","Capricorn"],["Pluto","Sagittarius · 6th house"]
-];
+function greetBucket(d){ d=d||new Date(); const h=d.getHours();
+  return h<12 ? "morning" : (h<17 ? "afternoon" : "evening"); }
+function greeting(){ return "good "+greetBucket()+", my love."; }
+function specialNote(d){ d=d||new Date();
+  const m=d.getMonth()+1, day=d.getDate();
+  if(m===3 && day===1) return "happy birthday, my love. the universe is brighter with you and your light in it.";
+  if(m===10 && day===28) return "happy anniversary, my love. i love doing life with you.";
+  return null;
+}
 
 /* ---------- hand-written readings ---------- */
 const HAND = [
-{t:"Water finds its level", p:"Pisces Sun",
- sky:"Your Pisces Sun is asking for softness today, not force.",
- b:"Your Sun lives in the last sign, the ocean where every river ends. Water never argues its way downhill; it simply keeps moving and arrives anyway. Whatever feels blocked today does not need to be pushed. It needs time, and time is the one thing you actually have.",
- br:"One slow breath in, and let the exhale be longer than the inhale."},
-{t:"The moon under the surface", p:"Scorpio Moon",
- sky:"Your Scorpio Moon is running deep today. Feeling a lot is not a malfunction.",
- b:"A Scorpio Moon feels everything at full depth, which is not a flaw but a wide instrument. The Buddhists say a feeling is like weather moving through a valley: real, strong, and temporary. You are the valley, not the storm.",
- br:"Name the feeling quietly, once, and let it sit beside you instead of on you."},
-{t:"The curious wind", p:"Gemini Rising",
- sky:"Gemini rising wants to look around today without having to fix anything.",
- b:"You meet the world with Gemini rising: quick, light, interested. Wind does not carry what it passes over. Today, let yourself notice things without needing to hold or solve any of them. Noticing is the whole activity.",
- br:"Look up from the screen once and find one thing you have never noticed before."},
-{t:"Soft speech, deep water", p:"Pisces Mercury",
- sky:"Pisces Mercury says the fog is allowed. Clarity is not a deadline.",
- b:"Mercury in Pisces thinks in images and tides rather than straight lines. If your thoughts feel foggy, that is not failure; fog is how the sea breathes onto land. You are allowed to say 'I don't know yet' and mean it kindly.",
- br:"Unclench your jaw. The sentence can finish itself later."},
-{t:"Loving what is far away", p:"Pisces Venus · 9th house",
- sky:"Venus in your ninth house is homesick for somewhere you have not been yet.",
- b:"Venus in Pisces in the ninth house loves widely: other places, other lives, big ideas. Longing is not a wound. In the sutras, aspiration is a seed, and seeds are supposed to spend a long while in the dark before anything shows above the soil.",
- br:"Think of one place you love. You do not have to go there today for it to be yours."},
-{t:"Peace as a practice", p:"Libra Mars · 4th house",
- sky:"Mars in Libra says keeping your peace counts as winning today.",
- b:"Your Mars works through balance, and it works from home ground. You fight best not by striking but by refusing to be pulled off center, the way a reed survives the storm that snaps the oak. Today, staying steady is the victory.",
- br:"Feel your feet on the floor. That is the whole assignment."},
-{t:"The far lantern", p:"Aquarius Jupiter · 8th house",
- sky:"Jupiter in your eighth house is quietly composting something old into something useful.",
- b:"Jupiter in Aquarius grows through what is shared and what is transformed. Old versions of you compost into new ones, the way autumn leaves feed the spring that buries them. Nothing you have been is wasted. It is all soil now.",
- br:"Thank a past version of yourself for one thing, silently."},
-{t:"Patience with the beginner", p:"Aries Saturn · 10th house",
- sky:"Saturn in your tenth house is building roots today, which look like nothing from above.",
- b:"Saturn in Aries in the tenth asks you to build slowly in a sign that wants to sprint. Bamboo spends years growing roots before it grows an inch of stalk, then rises faster than anything in the garden. If your progress feels invisible, it is probably roots.",
- br:"Lower the bar for today by one notch, on purpose."},
-{t:"The kind revolution", p:"Aquarius Uranus",
- sky:"Uranus in Aquarius says today's change can be quiet and still be real.",
- b:"Your Uranus insists that things can be different. Change in nature is rarely loud: the tide turns without announcing it. Whatever you are quietly becoming does not need anyone's permission, or an audience, or a launch date.",
- br:"One small thing done differently today counts as change."},
-{t:"Dreams with structure", p:"Capricorn Neptune",
- sky:"Neptune in Capricorn wants one soft dream given one hard edge today.",
- b:"Neptune in Capricorn dreams in stone and timber: visions that want to be built, not only felt. A mountain is nothing but water and dust that decided to stay. Give one dream a single note, a single step, and let that be enough construction for one day.",
- br:"Write one line of the dream down. Just one."},
-{t:"Small daily transformations", p:"Sagittarius Pluto · 6th house",
- sky:"Pluto in your sixth house is doing enormous work inside an ordinary Tuesday.",
- b:"Pluto in the sixth means your deepest changes happen in routines, not in dramatic moments. Rivers carve canyons by showing up daily and never by hurrying. Your small habits are quietly rearranging the landscape while you assume nothing is happening.",
- br:"Do the small thing badly rather than skip it beautifully."},
-{t:"The ocean holds everything", p:"Pisces Sun",
- sky:"Your Pisces Sun has room today for two feelings that disagree.",
- b:"An ocean does not choose which rivers it accepts. Your Pisces Sun has that same width: room for contradiction, for grief and hope on the same afternoon. The Zen teachers call it big mind. Nothing you feel today is too much for it.",
- br:"Let two opposite feelings sit in the same room without a referee."},
-{t:"Still water sees clearly", p:"Scorpio Moon",
- sky:"Your Scorpio Moon will see the bottom once it stops stirring the water.",
- b:"When a pond is agitated you cannot see the bottom; when it settles, everything is visible without any effort at all. Your Moon wants the truth of things. The fastest route to it today is not digging harder but sitting stiller.",
- br:"Sixty seconds of doing absolutely nothing. Set a timer if it helps."},
-{t:"Two birds, one branch", p:"Gemini Rising",
- sky:"Gemini rising is both of you today: the one doing, and the one watching.",
- b:"Gemini is the twins: the you that acts and the you that observes. In the Upanishads two birds sit on one branch; one eats the fruit and worries, one simply watches, at peace. Today, spend a little more time as the watching bird.",
- br:"Watch one of your own thoughts go by like a bus you are not taking."},
-{t:"The tide always returns", p:"Pisces Sun",
- sky:"If today is a low tide, your water sign already knows it is not a verdict.",
- b:"Low tide is not the sea failing. Energy, mood, and inspiration all move in tides, and yours are governed by a water sign that knows this in its bones. If today came in low, the only job is refusing to mistake it for forever.",
- br:"Say to yourself: this is a tide, not a verdict."},
-{t:"Roots drink in the dark", p:"Scorpio Moon",
- sky:"Your Scorpio Moon needs an unobserved hour, and that hour is productive.",
- b:"Everything a tree does above ground depends entirely on what it does below, unseen and unapplauded. Your Scorpio Moon does its best work in private: processing, composting, understanding. Needing time alone is not withdrawal. It is where the growing happens.",
- br:"Give yourself ten unobserved minutes and call them productive, because they are."},
-{t:"Beginner's mind", p:"Gemini Rising",
- sky:"Gemini rising turns not-knowing into freedom today.",
- b:"Suzuki Roshi said that in the beginner's mind there are many possibilities, and in the expert's there are few. Your rising sign never lost the beginner's mind, and the world politely calls it curiosity. It is actually a form of freedom.",
- br:"Ask one question today you would normally be embarrassed not to know."},
-{t:"The moon does not hurry", p:"Pisces Venus",
- sky:"Venus in Pisces is removing a deadline from your heart today.",
- b:"The moon takes a month to become full and nobody calls it slow. Whatever is ripening in you, love or work or forgiveness, is allowed a whole cycle. Venus in Pisces loves best when nothing is being timed.",
- br:"Remove one deadline you invented for yourself."},
-{t:"Anger as weather", p:"Libra Mars",
- sky:"Mars in Libra is holding something in to keep the peace. Say it gently instead.",
- b:"Mars in Libra often turns anger inward to keep the peace outward. But the sky does not apologize for thunder; it lets it pass through and then clears. A feeling expressed gently is far kinder to everyone than one buried politely.",
- br:"If something stung today, say so in one honest sentence, even just to yourself."},
-{t:"The eighth house garden", p:"Aquarius Jupiter · 8th house",
- sky:"Your luckiest planet lives where things end. Something that closed is turning into ground.",
- b:"The eighth house is where things end so other things can begin, and your most generous planet lives there. Any gardener will tell you the compost heap is the most fertile spot on the land. What ended recently is not gone. It is becoming soil.",
- br:"Name one ending that turned out to be a door."},
-{t:"Slow is smooth", p:"Aries Saturn",
- sky:"Saturn says rushing today will only make the trip louder, not shorter.",
- b:"Saturn's whole teaching is that slow is smooth and smooth is fast. The glacier moves a few meters a year and shapes entire continents. Hurrying will not get you there sooner; it will only make the journey noisier and less yours.",
- br:"Do the next task at three-quarter speed and notice that nothing collapses."},
-{t:"The mirror lake", p:"Pisces Mercury",
- sky:"Pisces Mercury has picked up someone else's mood. You can set it down.",
- b:"A still lake reflects the whole sky without keeping any of it. Mercury in Pisces gives you that reflective mind, which means you absorb other people's weather easily. Remember the lake's other trick: letting the sky go when it changes.",
- br:"Whose feeling are you carrying that is not yours? Set it down gently."},
-{t:"Metta for the self", p:"Scorpio Moon",
- sky:"Your Scorpio Moon gives fiercely. Today the circle starts at the center.",
- b:"The loving-kindness practice begins, always, with yourself: may I be safe, may I be well, may I be at ease. A Scorpio Moon extends that ferocity to everyone else first and then wonders why the well is low. Today it starts with you.",
- br:"May I be safe. May I be well. May I be at ease. Once through, slowly."},
-{t:"Clouds are the sky too", p:"Pisces Sun",
- sky:"An anxious day does not disprove the calm ones. Both are your sky.",
- b:"An anxious day does not mean the calm was a performance. Clouds do not disprove the sky; they are simply what it is doing right now. Behind them the blue is untouched, unbothered, exactly where you left it, waiting with no opinion.",
- br:"Look at the actual sky for thirty seconds. It is doing its practice."},
-{t:"The reed and the storm", p:"Libra Mars · 4th house",
- sky:"Mars in your fourth house says bend today where you would normally brace.",
- b:"Home is your Mars territory: you defend the peace where you live, inside and out. The Daoists loved the reed because it bends completely and breaks never. Flexibility is not weakness. It is the strongest shape water ever taught anything.",
- br:"Where you would normally brace today, try bending instead."},
-{t:"Uncarved wood", p:"Aries Saturn · 10th house",
- sky:"Saturn in your tenth house is loud about being finished. You are mid-carving.",
- b:"The Dao De Jing praises the uncarved block: full of every possibility precisely because it has not been forced into one shape. Your career house holds Saturn, so the pressure to be finished arrives daily. You are allowed to still be becoming.",
- br:"Replace 'I should be further along' with 'I am mid-carving.'"},
-{t:"Impermanence is mercy", p:"Sagittarius Pluto",
- sky:"Pluto in Sagittarius reminds you that no bad day is load-bearing.",
- b:"Everything changes: the Buddha's first and kindest fact. It means no bad day is holding up the building. Pluto in Sagittarius makes your transformations the optimistic kind, where whatever burns down in your life tends to clear a view.",
- br:"Something that felt permanent last year is gone now. Notice that you survived it."},
-{t:"The heron's patience", p:"Scorpio Moon",
- sky:"Your Scorpio Moon has heron patience today. Stop checking on it.",
- b:"A heron stands in the shallows for an hour, perfectly still, and eats very well. Your Moon has that patience when you trust it: the answer, the person, the shift all arrive if you can bear the stillness that comes before them.",
- br:"Whatever you are waiting for, stop checking on it until tomorrow."},
-{t:"Light through water", p:"Pisces Venus · 9th house",
- sky:"Venus in Pisces is seeing someone difficult kindly today. Let it.",
- b:"Sunlight underwater bends, softens, and turns everything gentle. That is how Venus in Pisces sees people: through kind water. The world will call it naive. The sutras call it right view of the heart, and it costs you nothing to keep it.",
- br:"Find one thing to quietly admire about a difficult person. Just one."},
-{t:"The middle way", p:"Libra Mars",
- sky:"Libra's scales and the middle way agree: adjust by the smallest amount today.",
- b:"Libra's scales and the Buddha's middle way say the same thing: not too tight, not too loose, like a well-tuned string. If you are white-knuckling something today, loosen a quarter turn. If you have let go completely, pick up one small end.",
- br:"Ask: tighter or looser? Then adjust by the smallest amount."},
-{t:"Every dawn is a first draft", p:"Gemini Rising",
- sky:"Gemini rising hands you a fresh face this morning. Yesterday is closed.",
- b:"Gemini rising gives you a new face for each morning, and the sky agrees: no two dawns have ever matched. Yesterday's version of you already did her job and clocked out. Today gets its own draft, and drafts are supposed to be imperfect.",
- br:"Forgive yesterday one specific thing, then close the tab."},
-{t:"The deep keel", p:"Pisces Sun · Scorpio Moon",
- sky:"Both your lights are water. What makes you feel deeply is what keeps you upright.",
- b:"A boat with a deep keel sails rough water that flips lighter boats. Your water Sun and water Moon are that keel: the thing that makes you feel everything heavily is precisely the thing keeping you steady in seas that capsize other people.",
- br:"Your sensitivity has carried you this far. Thank it instead of apologizing for it."},
-{t:"Rain is not failure", p:"Pisces Mercury",
- sky:"Pisces Mercury processes through the body today. Rest is the method.",
- b:"Nobody blames the sky for raining, and the garden certainly does not. Crying, resting, and moving slowly are the mind's rain: necessary, cleansing, and finite. Pisces Mercury thinks through the body, so let the body have its weather.",
- br:"Drink some water. You are mostly weather yourself."},
-{t:"The wisteria's secret", p:"Capricorn Neptune",
- sky:"Neptune in Capricorn is in year three of seven. Water it and walk away.",
- b:"Wisteria can take seven years to bloom for the first time, and gardeners plant it anyway, because once it starts it never really stops. Neptune in Capricorn dreams on exactly that schedule: long roots, sudden glory, then decades of it.",
- br:"Something in year three of seven is fine. Water it and walk away."},
-{t:"Interbeing", p:"Aquarius Jupiter",
- sky:"Jupiter in Aquarius says you are not carrying today alone, even if it looks that way.",
- b:"Thich Nhat Hanh saw the cloud in the sheet of paper: rain fed the tree, the tree became the page. Aquarius Jupiter thrives inside that web. A hundred hands you will never meet made your morning possible, and they are still out there.",
- br:"Trace one ordinary object back to the rain. It is all connected to you."},
-{t:"The sixth house altar", p:"Sagittarius Pluto · 6th house",
- sky:"Pluto in your sixth house can turn the dullest chore into something else today.",
- b:"The Zen kitchens teach that washing one bowl with full attention is worth a thousand distracted prayers. Your sixth house Pluto means the chores are where the transformation lives. One boring task done with total presence stops being boring.",
- br:"Pick the dullest task and do it like it is the only thing on earth."},
-{t:"Wind horse", p:"Aquarius Uranus",
- sky:"Uranus in Aquarius says hand today's uncontrollable thing to the wind.",
- b:"Tibetans hang prayer flags so the wind, and not the person, carries the wishes onward. Some things go much better delegated to the sky. Whatever you cannot control today, print it on an imaginary flag and let your Aquarius wind take a shift.",
- br:"Say: this one is the wind's job now."},
-{t:"Full ocean, small cup", p:"Pisces Sun",
- sky:"Your Pisces Sun is trying to pour the ocean into one day again.",
- b:"You cannot pour the whole ocean into a single day, and Pisces keeps attempting it. The cup you actually have holds a few hours of good attention, and that is genuinely, unglamorously enough. The rest of the ocean is not going anywhere.",
- br:"Choose the one thing today's cup is for. Everything else keeps."},
-{t:"The gardener's rest", p:"Aries Saturn",
- sky:"Saturn counts rest as effort's other half. Tonight is not a negotiation.",
- b:"Even the most driven gardener cannot make anything grow at night by staying up to watch it. Growth happens mostly while the gardener sleeps. Saturn respects effort, and it respects rest exactly as much, because rest is where effort banks.",
- br:"Rest tonight without earning it first. It counts anyway."},
-{t:"Mountain sits", p:"Capricorn Neptune",
- sky:"Neptune in Capricorn suggests you be geography for five minutes today.",
- b:"In meditation halls they say: sit like a mountain. The mountain is not trying to be calm; it simply has nowhere else to be. Borrow that posture for five minutes and let the day's weather happen around you rather than to you.",
- br:"Sit tall, soften your shoulders, and be geography for five breaths."},
-{t:"The friend at the gate", p:"Pisces Venus",
- sky:"Venus in Pisces is hosting a difficult guest today. Offer it tea.",
- b:"Rumi called the heart a guest house: every morning a new arrival, joy, meanness, some momentary awareness. Venus in Pisces makes you a gracious host even to the difficult guests, and difficult guests always stay shorter when nobody fights them at the door.",
- br:"Whatever showed up in you today, offer it a metaphorical cup of tea."},
+{t:"The valley spirit", p:"Tao Te Ching",
+ b:"The Tao Te Ching says the valley spirit never dies, and calls it the mysterious female: the low, open, receiving place where every stream ends up and everything green begins. Power, it insists, does not live at the summit. It lives in the valley, in whoever is soft enough to receive and patient enough to grow things.",
+ br:"Be the valley for ten minutes today: low, open, unimpressed by summits."},
+{t:"Water wins by yielding", p:"Tao Te Ching",
+ b:"Nothing in the world is softer than water, says the old book, and nothing is better at wearing down the hard. The stone does not notice it is losing. Softness is not the opposite of strength; it is the patient form of it.",
+ br:"Pick one hard thing today and be water at it: gentle, repeated, unbothered."},
+{t:"Mother of ten thousand things", p:"Tao Te Ching",
+ b:"The Tao is called the mother of the ten thousand things: everything that exists was carried, fed, and let go by something quieter than itself. The world runs on unglamorous tending. Every act of care you do today puts you in the oldest lineage there is.",
+ br:"Tend one small thing today and count yourself among the mothers of the world."},
+{t:"Guanyin listens", p:"Guanyin",
+ b:"Guanyin is the one who hears the cries of the world, and notice the choice: hearing, not fixing. Her compassion begins as pure attention, the way still water receives the whole moon without breaking. Sometimes the kindest thing you can offer anyone, including yourself, is to simply and fully listen.",
+ br:"Listen to one person today, or to yourself, without planning a reply."},
+{t:"Tara does not hesitate", p:"Tara",
+ b:"Green Tara is painted with one foot already stepping off her lotus, because compassion, in her school, does not form a committee first. She is the swift kind of kindness: the glass of water fetched, the blanket brought, the text answered. Small immediate care is a complete spiritual practice.",
+ br:"Do one kind thing today the moment you think of it."},
+{t:"Chiyo-ni and the morning glory", p:"Chiyo-ni",
+ b:"The poet Chiyo-ni found a morning glory wound around her well bucket at dawn, and rather than tear it free she went to the neighbors to borrow water. A whole philosophy in one small decision: the flower's morning mattered, and inconvenience was a fair price for tenderness. Some efficiencies are worth losing.",
+ br:"Let one small beautiful thing inconvenience you today, graciously."},
+{t:"The moon in a dewdrop", p:"Dogen",
+ b:"Dogen wrote that the whole moon and the entire sky fit in a single dewdrop on a blade of grass. You do not need a bigger life to hold something vast. One honest moment, fully attended, contains as much sky as anyone ever gets.",
+ br:"Give one ordinary moment today your entire attention, briefly."},
+{t:"One time, one meeting", p:"the tea room",
+ b:"The tea masters bow over every cup because of ichigo ichie: this gathering, exactly this one, will never happen again. Not because life is short, but because each moment is unrepeatable and therefore precious by definition. Today is a cup that will be offered exactly once.",
+ br:"Treat one routine moment today as the once-in-a-lifetime event it technically is."},
+{t:"Bathing in trees", p:"shinrin-yoku",
+ b:"The Japanese prescribe shinrin-yoku, forest bathing: no hiking goals, no step counts, just being under trees while the trees do what they do. The forest lowers blood pressure without being asked to. Some healing requires nothing from you but showing up beneath it.",
+ br:"Stand near something green today for five unhurried minutes."},
+{t:"The empty cup", p:"a Zen story",
+ b:"A professor once visited the master Nan-in, who poured tea until the cup overflowed and kept pouring. Like this cup, said Nan-in, you are full of your own opinions; how can I show you Zen unless you first empty your cup? An emptied mind is not ignorance. It is room.",
+ br:"Enter one conversation today with an empty cup and see what gets poured."},
+{t:"Rengetsu's clay", p:"Otagaki Rengetsu",
+ b:"The nun Rengetsu, widowed and orphaned over and over, made her living shaping tea ware and writing poems on the pots, and her sorrow made the clay gentler, not harder. She is proof that a heart can be broken repeatedly and still choose to make beautiful useful things. Grief and grace can share one pair of hands.",
+ br:"Make or mend one small useful thing today, at whatever pace your heart is at."},
+{t:"Spring does the growing", p:"a Zen poem",
+ b:"An old Zen verse says: sitting quietly, doing nothing, spring comes, and the grass grows by itself. It is not an argument for laziness but a reminder about jurisdiction. A great deal of what you worry over is grass, and grass has never once needed supervision.",
+ br:"Name one thing you are supervising that would grow without you, and clock out of it."},
+{t:"The bamboo bends", p:"the garden",
+ b:"In the snow country they plant bamboo beside the house because it bends under the drifts that snap the stiff trees, then stands back up in the thaw. Flexibility is a winter survival skill. Bending today is not breaking; it is the technique for being upright in spring.",
+ br:"Where you are braced today, soften one degree on purpose."},
+{t:"Yin keeps half the world", p:"yin",
+ b:"Yin is the moon half of everything: night, rest, water, winter, the inward turn. It is not the lesser half; nothing seeds, sleeps, or heals in full sun. When your day asks for quiet instead of output, that is not you failing the light. That is you keeping the balance the world actually runs on.",
+ br:"Give something its yin today: rest before you are desperate for it."},
+{t:"The lotus keeps its roots in the mud", p:"the lotus",
+ b:"The lotus is the East's favorite argument: roots in the mud, face in the light, and no embarrassment about either end. The mud is not the shameful backstory of the flower. It is the ingredients.",
+ br:"Thank one muddy chapter of your life for one thing it grew."},
+{t:"Metta begins at home", p:"metta",
+ b:"The loving-kindness practice starts, by design, with yourself: may I be safe, may I be well, may I live with ease. Only then does it widen to loved ones, strangers, difficult people, all beings. The Buddha ordered it that way on purpose. You cannot pour tea from an empty pot.",
+ br:"May I be safe. May I be well. May I live with ease. Once through, slowly, and mean it."},
+{t:"The cloud in this page", p:"Thich Nhat Hanh",
+ b:"Thich Nhat Hanh liked to show people a sheet of paper and point out the cloud in it: no cloud, no rain; no rain, no tree; no tree, no page. He called it interbeing. You have never once gotten through a day alone, and you are not doing so now; a hundred quiet hands are holding today up with you.",
+ br:"Trace one ordinary object back to the rain, and feel the company."},
+{t:"The moon behind clouds", p:"yugen",
+ b:"Japanese aesthetics has a word, yugen, for the beauty of things partly hidden: the moon behind clouds, the boat disappearing behind the island. Not everything lovely needs to be fully visible or fully understood. Some of what is best in you can stay veiled and still be working.",
+ br:"Let one thing stay mysterious today, including possibly your own mood."},
+{t:"The gentleness of passing things", p:"mono no aware",
+ b:"Mono no aware is the soft ache of knowing the cherry blossoms fall, and the understanding that they are more beautiful, not less, because they do. Impermanence is not the tragedy in the story. It is what makes anything precious enough to notice.",
+ br:"Notice one passing thing today and let it be lovelier for passing."},
+{t:"Kannon's thousand hands", p:"Kannon",
+ b:"Kannon is carved with a thousand arms because compassion at scale is not one grand gesture but a thousand small ones: an arm for every kind of help. You do not need a heroic act today. You need one hand doing one small thing, which is exactly how the statue does it.",
+ br:"Be one of the thousand hands today: one small help, done and released."},
+{t:"The paper lantern", p:"the lantern",
+ b:"A paper lantern holds one small flame behind the thinnest possible wall, and it is enough to walk home by. You are not required to light the whole road. A small warmth, honestly kept, is a working light.",
+ br:"Keep one small flame today: one pleasure, one comfort, guarded like a lantern."},
+{t:"The plum blooms in snow", p:"the plum branch",
+ b:"East Asian poets gave the winter plum the seat of honor because it blooms while snow is still falling, fragrant in weather that argues against flowers entirely. Courage is not waiting for conditions to improve. It is blooming a little anyway, on the branch you are on, in the weather you have.",
+ br:"Do one small blooming thing today without waiting for better weather."},
+{t:"The circle drawn in one breath", p:"enso",
+ b:"Zen calligraphers draw the enso, the circle, in a single breath, and it is prized precisely because it wobbles: complete and imperfect in the same stroke. They do not correct it. Today does not need revising to count as whole; it needs finishing, once, honestly, at your actual hand's pace.",
+ br:"Finish one thing today in one breath and decline to retouch it."},
+{t:"The seventy-two seasons", p:"the old calendar",
+ b:"The old East Asian calendar divides the year into seventy-two tiny seasons with names like east wind melts the ice and first peach blossoms. Someone loved the world enough to notice it changing every five days. That quality of attention is available to you this afternoon, free.",
+ br:"Name today's microseason yourself, from what you can actually see out the window."},
+{t:"Moonlight asks for nothing", p:"the moon",
+ b:"The moon lights every river it passes over without checking which ones deserve it, and loses nothing by shining. Its whole practice is reflection without depletion. There are ways of giving light that do not cost you the light; being warm to yourself today is one of them.",
+ br:"Shine on yourself first tonight: one kind sentence, said inwardly, unearned."},
+{t:"The willow survives the storm", p:"the willow",
+ b:"The proverb says the willow that bends outlasts the oak that resists, and the willow has the added grace of being beautiful while doing it. Yielding is not surrender; it is the shape strength takes when it intends to still be here in the morning. So are you.",
+ br:"Bend gracefully around one immovable thing today instead of debating it."},
 ];
 
-/* ---------- generated readings: 11 placements x 63 principles ---------- */
-const PLACEMENTS = [
-{p:"Pisces Sun",
- lore:"Your Sun lives in Pisces, the ocean at the end of every river, wide enough to hold whatever today carries in.",
- sky:["Your Pisces Sun favors softness over force today.","Your Pisces Sun is wide enough for today. Nothing needs pushing."]},
-{p:"Scorpio Moon",
- lore:"Your Scorpio Moon feels today at full depth, and depth has never once broken you.",
- sky:["Your Scorpio Moon is running deep today, which is not a problem to solve.","Your Scorpio Moon would rather feel it fully once than half-feel it twice."]},
-{p:"Gemini Rising",
- lore:"You meet this day with Gemini rising: light on your feet, interested in everything, obligated to none of it.",
- sky:["Gemini rising wants to notice things today, not fix them.","Gemini rising gives today a fresh face and no obligations."]},
-{p:"Pisces Mercury",
- lore:"Your Mercury thinks in tides and images, so today's thoughts may drift a while before they land, and that is how they land.",
- sky:["Pisces Mercury says the fog is allowed today.","Pisces Mercury is thinking in tides today. Let it."]},
-{p:"Pisces Venus · 9th house",
- lore:"Your Venus loves from Pisces in the ninth house: widely, gently, and often toward horizons you have not reached yet.",
- sky:["Venus in your ninth house is looking at the horizon again today.","Venus in Pisces makes today's tenderness the long-distance kind."]},
-{p:"Libra Mars · 4th house",
- lore:"Your Mars works from Libra in the fourth house, defending the peace of the place you live, inside and out.",
- sky:["Mars in Libra counts keeping your peace as today's victory.","Mars in your fourth house is guarding the quiet at home today."]},
-{p:"Aquarius Jupiter · 8th house",
- lore:"Your Jupiter grows from Aquarius in the eighth house, where endings quietly become material for beginnings.",
- sky:["Jupiter in your eighth house is turning something old into soil today.","Jupiter in Aquarius finds today's luck in what is shared."]},
-{p:"Aries Saturn · 10th house",
- lore:"Your Saturn sits in Aries in the tenth house, asking for slow building in a sign that would rather sprint.",
- sky:["Saturn in your tenth house is growing roots today, which look like nothing.","Saturn says today's slow is tomorrow's smooth."]},
-{p:"Aquarius Uranus",
- lore:"Your Uranus in Aquarius insists, quietly and permanently, that things can be different.",
- sky:["Uranus in Aquarius says today's change can be small and still count.","Uranus in Aquarius turns one tiny difference into today's revolution."]},
-{p:"Capricorn Neptune",
- lore:"Your Neptune dreams in Capricorn: in stone and timber, in visions that want one real step taken toward them.",
- sky:["Neptune in Capricorn wants one soft dream given one hard edge today.","Neptune in Capricorn builds the dream slowly, which is the only way it builds."]},
-{p:"Sagittarius Pluto · 6th house",
- lore:"Your Pluto works from the sixth house, hiding your deepest transformations inside completely ordinary routines.",
- sky:["Pluto in your sixth house is doing quiet work inside today's routine.","Pluto says today's small habit is moving something enormous."]},
+/* ---------- lenses x principles ---------- */
+const LENSES = [
+{p:"the moon", lore:"The moon has kept the feminine hours since the beginning, growing and thinning and growing again without a single apology."},
+{p:"water", lore:"Water is the oldest teacher in the East: the softest thing in the world, and the one that carved the gorges."},
+{p:"the valley", lore:"The Tao calls the valley spirit the mysterious female, the low open place where every stream arrives and everything green begins."},
+{p:"Guanyin", lore:"Guanyin, who hears the cries of the world, receives each day the way still water receives the moon: completely, without flinching."},
+{p:"the garden", lore:"A garden never argues with its season, and nothing in it has ever bloomed by being scolded."},
+{p:"the tide", lore:"The tide is the sea breathing, in and out, twice a day, forever, and never once in a hurry."},
+{p:"the forest", lore:"Step under the canopy and the forest lowers your shoulders for you; the Japanese call it shinrin-yoku, bathing in trees."},
+{p:"the lotus", lore:"The lotus keeps its roots in the mud and its face in the light, and declines to be embarrassed about either."},
+{p:"the mountain", lore:"The mountain practices the oldest meditation there is: it stays, and lets the weather be the weather."},
+{p:"the tea room", lore:"In the tea room every meeting happens exactly once, so the cup is warmed and offered with the whole heart."},
+{p:"the old calendar", lore:"The old East Asian calendar keeps seventy-two tiny seasons, because someone was paying loving attention to every five days of the world."},
+{p:"the plum branch", lore:"The plum blossoms while the snow is still falling, which is why the poets call it the flower of courage."},
 ];
 
 const PRINCIPLES = [
@@ -517,7 +427,7 @@ const PRINCIPLES = [
 {tt:"Star navigation", x:"Migrating birds steer by stars they will never reach, and the not-reaching is fine, because steering was the point. Some of your ideals are for navigation, not for arrival.", br:"Let one ideal guide today's direction without demanding today's arrival."},
 ];
 
-/* ---------- library assembly: 41 + 11x63 = 734 unique readings ---------- */
+/* ---------- library assembly: 26 + 12x63 = 782 unique readings ---------- */
 function mulberry(seed){ return function(){
   seed |= 0; seed = seed + 0x6D2B79F5 | 0;
   let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
@@ -528,14 +438,13 @@ function slotTitle(s){ return ("h" in s) ? HAND[s.h].t : PRINCIPLES[s.ci].tt; }
 function buildLib(){
   const lib = [];
   for(let h=0; h<HAND.length; h++) lib.push({h});
-  for(let pi=0; pi<PLACEMENTS.length; pi++)
-    for(let ci=0; ci<PRINCIPLES.length; ci++) lib.push({pi, ci});
+  for(let li=0; li<LENSES.length; li++)
+    for(let ci=0; ci<PRINCIPLES.length; ci++) lib.push({li, ci});
   const rnd = mulberry(20260716);
   for(let i=lib.length-1; i>0; i--){
     const j = Math.floor(rnd()*(i+1)); [lib[i],lib[j]] = [lib[j],lib[i]];
   }
-  // Repair pass: no title may appear on two consecutive days, wraparound
-  // included, so a repeat is never felt even across the 2-year boundary.
+  // Repair pass: no title on two consecutive days, wraparound included.
   const L = lib.length;
   for(let pass=0; pass<3; pass++){
     let fixed = true;
@@ -561,60 +470,66 @@ const LIB = buildLib();
 function readingAt(n){
   const slot = LIB[((n % LIB.length) + LIB.length) % LIB.length];
   if("h" in slot) return HAND[slot.h];
-  const P = PLACEMENTS[slot.pi], C = PRINCIPLES[slot.ci];
-  return {t: C.tt, p: P.p, sky: P.sky[slot.ci % P.sky.length],
-          b: P.lore + " " + C.x, br: C.br};
+  const L = LENSES[slot.li], C = PRINCIPLES[slot.ci];
+  return {t: C.tt, p: L.p, b: L.lore + " " + C.x, br: C.br};
 }
 function todayReading(){ return readingAt(dayNumber()); }
 
-/* ---------- one kindness for the body ----------
-   Gentle, general, PCOS-supportive daily care. Not medical advice,
-   never about weight, never a rule. One thing, offered.          */
+/* ---------- one kindness for the body: a daily pair to choose from ----------
+   Gentle, small, concrete, PCOS-supportive. Not medical advice, never
+   about weight, never a rule. Two offered, she picks one.              */
 const CARE = [
 {a:"Eat something with protein before your first coffee.", w:"Steadier blood sugar in the morning tends to mean a steadier afternoon."},
-{a:"Take a ten-minute walk after your biggest meal.", w:"A gentle walk after eating helps the body handle that meal. Ten minutes is the whole ask."},
-{a:"Get some daylight on your face in the first hour you're up.", w:"Morning light sets the clock that runs sleep, mood, and hormones."},
-{a:"Put something green on the plate at one meal.", w:"Fiber does slow, quiet work. No plan required, just one green thing."},
-{a:"Aim for lights out at the same time as yesterday.", w:"Consistent sleep timing does more for hormones than any perfect night ever could."},
-{a:"Move in a way that feels good, not punishing.", w:"Strolling, stretching, dancing badly in the kitchen. The body counts all of it."},
-{a:"Drink a full glass of water before you drink anything else.", w:"Small, boring, immediately noticeable."},
-{a:"Notice one moment of stress today and breathe out longer than you breathe in.", w:"Long exhales tell the nervous system the emergency is over."},
-{a:"Have a handful of nuts or seeds somewhere in the day.", w:"Magnesium-rich food. Also the least dramatic act of self-care available."},
-{a:"Sit down to eat one meal without a screen.", w:"The body digests better when it knows it's eating."},
-{a:"If you have questions about your PCOS management, write one down for your doctor.", w:"You do not have to hold every question alone until the next appointment."},
-{a:"Stand up and stretch once an hour you're at the desk.", w:"Long sitting is its own small stress. Interrupting it is enough."},
-{a:"Add something with olive oil, avocado, or fish to a meal.", w:"The kind of fat that tends to calm inflammation rather than stoke it."},
-{a:"Skip the screen for the last twenty minutes before sleep.", w:"Your sleep quality tomorrow is decided tonight."},
-{a:"Have breakfast rather than pushing through on nothing.", w:"Skipping meals asks the body to run on stress hormones. It will comply, and you will feel it."},
+{a:"Take a ten-minute walk after your biggest meal.", w:"A gentle walk after eating helps the body handle that meal."},
+{a:"Get daylight on your face in the first hour you are up.", w:"Morning light sets the clock that runs sleep, mood, and hormones."},
+{a:"Put one green thing on the plate at one meal.", w:"Fiber does slow, quiet work. One green thing is plenty."},
+{a:"Lights out at the same time as yesterday.", w:"Consistent sleep timing does more for hormones than any single perfect night."},
+{a:"Move for five minutes in any way that feels nice.", w:"Strolling, stretching, dancing badly in the kitchen. The body counts all of it."},
+{a:"Drink a full glass of water before anything else.", w:"Small, boring, immediately noticeable."},
+{a:"When something stresses you today, exhale longer than you inhale.", w:"Long exhales tell the nervous system the emergency is over."},
+{a:"Have a small handful of nuts or seeds.", w:"Magnesium-rich, and the least dramatic act of self-care available."},
+{a:"Eat one meal without a screen.", w:"The body digests better when it knows it is eating."},
+{a:"Write down one question for your doctor if anything is on your mind.", w:"You do not have to hold every question alone until the next appointment."},
+{a:"Stand up and stretch once every hour you are at the desk.", w:"Long sitting is its own small stress. Interrupting it is enough."},
+{a:"Add olive oil, avocado, or fish to one meal.", w:"The kind of fat that calms inflammation rather than stoking it."},
+{a:"No screens for the last twenty minutes before sleep.", w:"Tomorrow's energy is decided tonight."},
+{a:"Eat breakfast instead of pushing through on nothing.", w:"Skipping meals asks the body to run on stress hormones, and you will feel it."},
 {a:"Take five minutes of quiet with nothing in your hands.", w:"Cortisol responds to rest more reliably than it responds to plans."},
-{a:"Carry a snack so the long stretch between meals doesn't ambush you.", w:"Being prepared is kinder than being disciplined."},
-{a:"Pick a strength move you like and do one set of it.", w:"Muscle helps the body use sugar well. One set is a legitimate amount."},
-{a:"Warm tea instead of the third coffee.", w:"Caffeine after mid-afternoon quietly borrows from tonight's sleep."},
-{a:"Rest today if your body is asking, and don't audit the request.", w:"Fatigue is information, not laziness. PCOS makes that a real distinction."},
-{a:"Put whole grain in place of white at one meal, if it's easy.", w:"Slower energy, fewer crashes. Only if it's easy."},
+{a:"Put a snack in your bag for the long stretch between meals.", w:"Being prepared is kinder than being disciplined."},
+{a:"Do one set of any strength move you like.", w:"Muscle helps the body use sugar well. One set is a legitimate amount."},
+{a:"Make the afternoon drink a tea instead of a third coffee.", w:"Caffeine after mid-afternoon quietly borrows from tonight's sleep."},
+{a:"If your body asks for rest today, grant it without an audit.", w:"Fatigue is information, not laziness. PCOS makes that a real distinction."},
+{a:"Swap white for whole grain at one meal, only if it is easy.", w:"Slower energy, fewer crashes. Only if it is easy."},
 {a:"Say one kind thing to your body out loud.", w:"It has been working this whole time without being thanked."},
-{a:"Take your medication or supplement at the same time you did yesterday.", w:"Consistency is where the benefit actually lives. Only what your doctor gave you."},
-{a:"Notice how you feel two hours after lunch and remember it.", w:"You are the only one collecting data on you. It's useful."},
-{a:"Get to bed thirty minutes earlier than you think you need to.", w:"Sleep is the least glamorous and most effective thing on this entire list."},
+{a:"Take your medication or supplement at the same time as yesterday.", w:"Consistency is where the benefit lives. Only what your doctor gave you."},
+{a:"Notice how you feel two hours after lunch.", w:"You are the only one collecting data on you. It is useful."},
+{a:"Get to bed thirty minutes earlier than you think you need.", w:"Sleep is the least glamorous and most effective thing on this list."},
 {a:"Have something fermented today: yogurt, kimchi, whatever you like.", w:"The gut and the hormones are in constant conversation."},
 {a:"Do the gentle version of the workout instead of skipping it.", w:"Something is not a compromise. Something is the strategy."},
-{a:"Let one thing off the list to lower today's stress load.", w:"Chronic stress is a PCOS variable too, and it's the one you can actually negotiate with."},
-{a:"Have iron-rich food if your cycle has been heavy.", w:"Greens, lentils, red meat. Tiredness sometimes has a very ordinary cause."},
+{a:"Cross one thing off today's list without doing it.", w:"Chronic stress is a PCOS variable too, and this one you can negotiate with."},
+{a:"Eat something iron-rich if your cycle has been heavy.", w:"Greens, lentils, red meat. Tiredness sometimes has a very ordinary cause."},
 {a:"Ask for help with one thing today.", w:"Managing a chronic condition is real work. It is allowed to be shared."},
 {a:"Sit in the sun for a few minutes if there is sun.", w:"Vitamin D, warmth, and a break, all in one errand."},
-{a:"Track how you're actually feeling, not how you should be feeling.", w:"Honest notes make better appointments."},
-{a:"Eat the carbohydrate with a protein or a fat rather than alone.", w:"Same food, gentler curve. No restriction involved."},
-{a:"Take the stairs once today, slowly, and without making it a test.", w:"Small movement, repeated, beats heroic movement, abandoned."},
+{a:"Jot one honest line about how you actually feel today.", w:"Honest notes make better appointments."},
+{a:"Pair the carbohydrate with a protein or a fat.", w:"Same food, gentler curve. No restriction involved."},
+{a:"Take the stairs once, slowly, without making it a test.", w:"Small movement, repeated, beats heroic movement, abandoned."},
 {a:"Put your phone in another room for twenty minutes.", w:"The nervous system notices."},
 {a:"Do one thing today purely because it is pleasant.", w:"Joy is not the reward for good health management. It is part of it."},
+{a:"Eat one whole fruit today.", w:"Fruit plus its own fiber is the version the body likes best."},
+{a:"Swap one soda or sweet drink for water or unsweetened tea.", w:"One swap, once. The gentlest possible favor to your blood sugar."},
 ];
-function todayCare(){ const n = dayNumber();
-  return CARE[(((n*11) % CARE.length) + CARE.length) % CARE.length]; }
+function todayCarePair(){
+  const n = dayNumber(), len = CARE.length;
+  const i1 = (((n*11) % len) + len) % len;
+  let i2 = (((n*17 + 7) % len) + len) % len;
+  if(i2 === i1) i2 = (i2 + 1) % len;
+  return [i1, i2];
+}
+function carePickToday(){
+  return (store.carePick && store.carePick.d === dkey()) ? store.carePick.i : null;
+}
 
-/* ---------- Pokemon ----------
-   Full National Dex through Gen 9 (1..1025), deterministically shuffled:
-   no repeat companion for 1025 days. Name, genus, type, and a Pokedex
-   description come from PokeAPI, cached forever on first view.       */
+/* ---------- Pokemon ---------- */
 const DEX_MAX = 1025;
 
 const PK_NOTES = {
@@ -717,6 +632,7 @@ const NAME_FIX = {
   "type-null":"Type: Null", "nidoran-f":"Nidoran ♀", "nidoran-m":"Nidoran ♂",
   "farfetchd":"Farfetch'd", "sirfetchd":"Sirfetch'd", "flabebe":"Flabébé"
 };
+
 function titleName(raw){
   const k = String(raw).toLowerCase();
   if(NAME_FIX[k]) return NAME_FIX[k];
@@ -741,6 +657,7 @@ function pickFlavor(entries){
 /* ---------- state ---------- */
 let expanded = false;
 let currentDay = dayNumber();
+let currentGreet = greetBucket();
 let pk = {id: todayDexId(), name:null, genus:null, flavor:null, note:null};
 const kkey = r => r.t + "\u00a7" + r.p;
 const isKept = r => store.kept.some(k => (k.k || (k.t+"\u00a7"+k.p)) === kkey(r));
@@ -751,30 +668,39 @@ function esc(s){ return String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;"
 
 function render(){
   $("#dateLbl").textContent = niceDate();
-  const r = todayReading(), c = todayCare(), kept = isKept(r);
+  $("#greet").textContent = greeting();
+  const r = todayReading(), kept = isKept(r);
+  const [c1, c2] = todayCarePair(), pick = carePickToday();
+  const note = specialNote();
   $("#main").innerHTML = `
-  <div class="eyebrow"><span><span class="bl">✿</span>Today's reading</span></div>
+  ${note ? `<div class="lovecard"><span class="bl">\u273f</span><span>${esc(note)}</span></div>` : ""}
+
+  <div class="eyebrow"><span><span class="bl">\u273f</span>Today's reading</span></div>
   <div class="card">
     <p class="rtitle">${esc(r.t)}</p>
-    <div class="rtag">aligned with <b>${esc(r.p)}</b></div>
+    <div class="rtag">from <b>${esc(r.p)}</b></div>
     <p class="rbody ${expanded?"":"fold"}">${esc(r.b)}</p>
-    ${expanded ? `<div class="breath">${esc(r.br)}</div>` : ""}
+    ${expanded ? `<div class="breathline">${esc(r.br)}</div>` : ""}
     <div class="rowbtns">
       <button class="ghost" id="expand">${expanded ? "Fold" : "Read more"}</button>
-      <button class="ghost ${kept?"kept":""}" id="keep">${kept ? "Kept ✓" : "Keep this"}</button>
+      <button class="ghost ${kept?"kept":""}" id="keep">${kept ? "Kept \u2713" : "Keep this"}</button>
     </div>
   </div>
 
-  <div class="eyebrow"><span><span class="bl">✿</span>One kindness for the body</span></div>
-  <div class="card care">
-    <span class="caremark">✦</span>
-    <div>
-      <p class="careline">${esc(c.a)}</p>
-      <p class="carewhy">${esc(c.w)}</p>
-    </div>
+  <div class="eyebrow"><span><span class="bl">\u273f</span>One kindness for the body</span><span class="n">pick one</span></div>
+  <div class="carechoice">
+    <button class="careopt ${pick===c1?"picked":""}" data-care="${c1}">
+      <span class="tick">\u2713</span>
+      <span><span class="careline">${esc(CARE[c1].a)}</span><br/><span class="carewhy">${esc(CARE[c1].w)}</span></span>
+    </button>
+    <p class="careor">or</p>
+    <button class="careopt ${pick===c2?"picked":""}" data-care="${c2}">
+      <span class="tick">\u2713</span>
+      <span><span class="careline">${esc(CARE[c2].a)}</span><br/><span class="carewhy">${esc(CARE[c2].w)}</span></span>
+    </button>
   </div>
 
-  <div class="eyebrow"><span><span class="bl">✿</span>Pokemon of the day</span></div>
+  <div class="eyebrow"><span><span class="bl">\u273f</span>Pokemon of the day</span></div>
   <div class="card pkcard">
     <div class="pkimg" id="pkbox">
       <img alt="${pk.name ? esc(pk.name) : "Today's Pokemon"}" id="pkimg"
@@ -788,17 +714,18 @@ function render(){
     </div>
   </div>
 
-  <div class="eyebrow"><span><span class="bl">✿</span>Your sky today</span></div>
-  <div class="card">
-    <p class="skyline">${esc(r.sky)}</p>
-    <table class="chart">${CHART.map(x=>`<tr><td class="g"><span class="glyph">${GLYPHS[x[0]]||"\u2726"}</span></td><td class="pl">${esc(x[0])}</td><td>${esc(x[1])}</td></tr>`).join("")}</table>
+  <div class="eyebrow"><span><span class="bl">\u273f</span>Breathe with me</span><span class="n">in 4 &middot; out 6</span></div>
+  <div class="card breathwrap">
+    <div class="bstage"><div class="bcircle" id="bcircle"></div></div>
+    <div class="bword" id="bword"></div>
+    <div class="bcount">whenever you need it</div>
   </div>
 
-  <div class="eyebrow"><span><span class="bl">✿</span>Kept readings</span><span class="n">${store.kept.length || ""}</span></div>
+  <div class="eyebrow"><span><span class="bl">\u273f</span>Kept readings</span><span class="n">${store.kept.length || ""}</span></div>
   <div class="card">
     ${store.kept.length ? store.kept.slice().reverse().map((k,i)=>`
       <div class="kept">
-        <div class="kmeta"><span class="bl">✿</span>${esc(k.d)} · ${esc(k.p)}</div>
+        <div class="kmeta"><span class="bl">\u273f</span>${esc(k.d)} &middot; ${esc(k.p)}</div>
         <p class="ktitle">${esc(k.t)}</p>
         <p class="kbody">${esc(k.b)}</p>
         <button class="krm" data-rm="${store.kept.length-1-i}">Release</button>
@@ -806,6 +733,7 @@ function render(){
       : `<div class="empty">Anything you keep will wait for you here.</div>`}
   </div>`;
   wire();
+  startBreath();
 }
 
 function wire(){
@@ -816,6 +744,14 @@ function wire(){
     else store.kept.push({k:kkey(r), t:r.t, p:r.p, b:r.b, d:dkey()});
     saveStore(); render();
   };
+  document.querySelectorAll("[data-care]").forEach(b => {
+    b.onclick = () => {
+      const i = parseInt(b.dataset.care, 10);
+      if(!Number.isInteger(i) || i < 0 || i >= CARE.length) return;
+      store.carePick = (carePickToday() === i) ? null : {d: dkey(), i};
+      saveStore(); render();
+    };
+  });
   document.querySelectorAll("[data-rm]").forEach(b => {
     b.onclick = () => {
       const i = parseInt(b.dataset.rm, 10);
@@ -825,7 +761,30 @@ function wire(){
     };
   });
   const img = $("#pkimg");
-  if(img) img.onerror = () => { const box = $("#pkbox"); if(box) box.innerHTML = `<span class="pkfall">✶</span>`; };
+  if(img) img.onerror = () => { const box = $("#pkbox"); if(box) box.innerHTML = `<span class="pkfall">\u2736</span>`; };
+}
+
+/* ---------- breathing widget: 4s in, 6s out ---------- */
+let breathTimer = null;
+function startBreath(){
+  if(breathTimer){ clearTimeout(breathTimer); breathTimer = null; }
+  const circle = $("#bcircle"), word = $("#bword");
+  if(!circle || !word) return;
+  const still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(still){ word.textContent = "in for 4, out for 6, at your own pace"; return; }
+  function inhale(){
+    word.textContent = "breathe in";
+    circle.style.transition = "transform 4s cubic-bezier(.4,0,.6,1)";
+    circle.style.transform = "scale(1.28)";
+    breathTimer = setTimeout(exhale, 4000);
+  }
+  function exhale(){
+    word.textContent = "breathe out";
+    circle.style.transition = "transform 6s cubic-bezier(.4,0,.6,1)";
+    circle.style.transform = "scale(1)";
+    breathTimer = setTimeout(inhale, 6000);
+  }
+  inhale();
 }
 
 /* ---------- pokemon lookup, cached forever after first view ---------- */
@@ -850,16 +809,12 @@ function loadPokemon(){
     pk.name = d.n; pk.genus = d.g; pk.flavor = d.f; pk.note = noteFor(id, d.t);
     render(); prefetchTomorrow();
   }).catch(() => {
-    if(hit){ // old cache format without genus/flavor: still show what we have
-      pk.name = hit.n; pk.note = noteFor(id, hit.t); render(); return;
-    }
+    if(hit){ pk.name = hit.n; pk.note = noteFor(id, hit.t); render(); return; }
     pk.name = "Pokemon #" + id;
     pk.note = "Your companion is here in spirit. Its details will load next time there's a signal.";
     render();
   });
 }
-/* Quietly cache tomorrow's companion so mornings load instantly,
-   and warm the artwork into the browser cache too. */
 function prefetchTomorrow(){
   try{
     const nid = dexIdFor(dayNumber() + 1);
@@ -870,17 +825,18 @@ function prefetchTomorrow(){
   }catch(e){}
 }
 
-/* ---------- day rollover ----------
-   A home-screen app can sit in memory for days. Without this, it would
-   keep showing yesterday. Checked on resume, on focus, and slowly. */
+/* ---------- rollover: new day, or the greeting's hour has moved on ---------- */
 function checkDay(){
-  const n = dayNumber();
-  if(n === currentDay) return;
-  currentDay = n;
-  expanded = false;
-  pk = {id: todayDexId(), name:null, genus:null, flavor:null, note:null};
-  render();
-  loadPokemon();
+  const n = dayNumber(), g = greetBucket();
+  if(n !== currentDay){
+    currentDay = n; currentGreet = g;
+    expanded = false;
+    pk = {id: todayDexId(), name:null, genus:null, flavor:null, note:null};
+    render();
+    loadPokemon();
+    return;
+  }
+  if(g !== currentGreet){ currentGreet = g; render(); }
 }
 document.addEventListener("visibilitychange", () => { if(!document.hidden) checkDay(); });
 window.addEventListener("focus", checkDay);
